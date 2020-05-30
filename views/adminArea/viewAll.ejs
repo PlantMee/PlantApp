@@ -1,0 +1,76 @@
+ <%- include("../partials/adminHeader"); -%>
+<!--^^^^^^^^^^^^^^^^^HEADER^^^^^^^^^^^^^^^^^^^^-->
+	<div class="container mt-5">
+      <div class="row tm-content-row">
+        <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 tm-block-col" style="padding: 0;margin:0">
+          <div class="tm-bg-primary-dark tm-block tm-block-products">
+            <div class="tableProducts">
+              <table id="productTable" class="table table-hover ">
+               <thead id="productHead" class="thead-dark" > 
+               		<tr> <th scope="col">&nbsp;</th> 
+	               		<th scope="col">PRODUCT NAME</th> 
+	               		<th scope="col">UNIT SOLD</th> 
+	               		<th scope="col">IN STOCK</th> 
+	               		<th scope="col">PRICE</th>
+	               		<th scope="col">CATEGORY</th> 
+	               		<th scope="col">&nbsp;</th> 
+               		</tr> 
+               	</thead> 
+               	<tbody> 
+               	<% plantData.forEach(function(product){ %>
+               	<tr> 
+               		<th scope="row" class="indexProduct"></th> 
+               		<td class="tm-product-name"><%= product.name %></td>
+		            <td><%= product.quantitySold %></td> 
+		            <td><%= product.quantityAvailable %></td> </td> 
+		            <td><%= product.price %></td> 
+		            <td><%= product.category.title %></td> 
+		            <td> <a href="/admin/plant/<%= product._id %>/edit" class="editLink"><i class="far fa-edit"></i></a> </td> 
+		        </tr>
+		        <% }) %>
+                  
+                </tbody> </table>
+            </div>
+            <!-- table container -->
+            <a href="/admin/plant/new" class="btn btn-primary btn-block mb-3">ADD NEW ITEM</a>
+          </div>
+        </div>	
+        <!--==============================================================================-->
+
+		<!--=================NavBar child category pages================-->
+        <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 tm-block-col">
+          <div class="tm-bg-primary-dark tm-block tm-block-product-categories">
+            <h2 class="tm-block-title">Product Categories</h2>
+            <div class="tm-product-table-container">
+              <table class="table tm-table-small tm-product-table">
+                <tbody>
+                  <% childNav.forEach(function(foundChild){ %>
+                  <tr>
+                    <td class="tm-product-name"><%= foundChild.title %></td>                    
+                    </td>
+                  </tr>                  
+                <% }) %>
+                </tbody>
+              </table>
+            </div>
+            <!-- table container -->
+            <a href="/admin/childNav/new" class="btn btn-primary btn-block text-uppercase mb-3">
+              Add new category
+            </a>
+          </div>
+        </div>
+      </div>
+      <!--==============================================================================-->
+    </div>
+
+<!--SETTING INDEX VARIABLE USING JAVASCRIPT-->
+<script>
+	var indexProduct =document.querySelectorAll(".indexProduct");
+	for(var i=0;i<indexProduct.length;i++){
+		indexProduct[i].innerHTML=i+1;
+	}
+</script>
+<!--==========================================-->
+
+<!--//////////////////////////FOOTER///////////////////////////////-->
+<%- include("../partials/adminFooter"); -%>

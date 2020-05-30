@@ -1,0 +1,574 @@
+<%- include("../partials/header"); -%>
+<style>
+html{
+    height: 100%;
+}
+#content{
+    text-align: center;
+    padding-top: 25%;
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+                0px 8px 13px rgba(0,0,0,0.1),
+                0px 18px 23px rgba(0,0,0,0.1);
+}
+h1,h3{
+    color: #27373b;
+    font-family: 'Raleway',sans-serif !important;
+}
+h1{
+    font-weight: 700;
+    font-size:5em; 
+}
+h3{
+    text-align: center;
+}
+#learn{
+    border-radius: 25px;
+}
+hr{
+    width:auto;
+    border-top: 1px solid #f8f8f8;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+#SearchBar, #SearchButton{
+    border-radius: 7px;
+}
+#SearchNavBar{
+    height:=10px;
+}
+#SearchBar{
+    width: 600px !important;
+}
+
+#searchbar {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 7px;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.sbutton {
+    background: white;
+    /* border-radius: 10px!important; */
+    /* border: 1px solid #ced4da!important; */
+    width: inherit;
+    margin-left: -30px!important;
+    /* padding-left: 20px!important; */
+    height: 36px;
+    background: #fdfdfd;
+    border: 0;
+    /* position: absolute; */
+    /* top: 0; */
+    /* right: 0; */
+    /* border-radius: 0 50px 50px 0; */
+    border-radius: 0px 7px 7px 0px;
+    margin: 2.5px 0px;
+}
+
+.navbar-nav .nav-link {
+    margin-right: 30px;
+    color: black!important;
+    font-family: 'PT Sans', sans-serif!important;
+    font-size: 25px!important;
+    margin-left: 0px;
+   
+}
+
+#BarSearchBar{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.gallery-wrap .img-big-wrap img {
+    height: 450px;
+    width: auto;
+    display: inline-block;
+    cursor: zoom-in;
+}
+
+#returntotop{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    width: 50px;
+    height: 50px;
+    display: block;
+    text-decoration: none;
+    -webkit-border-radius: 35px;
+    -moz-border-radius: 35px;
+    border-radius: 35px;
+    display: none;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: 1s;
+}
+#returntotop i{
+    color: #ffffff;
+    margin: 2.5px;
+    position: absolute;
+    left: 16px;
+    top: 13px;
+    font-size: 19px;
+    transition: 0.3s;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    
+}
+#returntotop:hover{
+    background: #6c757d;
+}
+#returntotop:hover i{
+    color: #ffffff;
+    top: 0px;
+}
+
+body::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: -webkit-gradient(linear,left top,left bottom,from(#ff8a00),to(#e52e71));
+    background: linear-gradient(180deg,#6c757d,#e6f0ec,#6c757d);
+    border-radius: 30px;
+    box-shadow: inset 2px 2px 2px hsla(0,0%,100%,.25), inset -2px -2px 2px rgba(0,0,0,.25);
+}
+::-webkit-scrollbar-track {
+    background: linear-gradient(90deg,#201c29,#201c29 1px,#100e17 0,#100e17);
+}
+.gallery-wrap .img-small-wrap .item-gallery {
+    width: 60px;
+    height: 60px;
+    border: 1px solid #ddd;
+    margin: 7px 2px;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.gallery-wrap .img-small-wrap { 
+    text-align: center;
+}
+.gallery-wrap .img-small-wrap img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: zoom-in;
+}
+
+
+.carousel{
+    padding-left: 10px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    padding-right: 10px !important;
+}
+	#CardLeft{
+    border-right: auto !important;
+}
+#SpecMenuBar{
+    margin-left:7% !important ;
+}
+#careTable{
+    width: 50%;
+    text-align: justify-all;
+    font-family: Arial;
+}
+.bg-secondary{
+    background-color: #f0f0f0 !important;
+}
+#RatingsImage{
+    padding-left: 5%;
+    padding-bottom: 1%;
+}
+.headerChange{
+    text-align: left;
+}		
+</style>
+	<div class="topscroll">
+        <a onclick="topFunction()" id="returntotop" style="display: block;"><span><i class="fa fa-angle-up" aria-hidden="true"></i></span>
+        </a>
+    </div>
+	<div class="container">
+<hr>
+        
+	<div class="card">
+			<div class="row">
+				<aside class="col-sm-5 border-right" id="CardLeft">
+		<article class="gallery-wrap">
+		<div id="caruselPlantImage" class="carousel slide" data-ride="carousel">
+		  <ol class="carousel-indicators">
+		    <li data-target="#caruselPlantImage" data-slide-to="0" class="active"></li>
+		    <li data-target="#caruselPlantImage" data-slide-to="1"></li>
+		    <li data-target="#caruselPlantImage" data-slide-to="2"></li>
+		  </ol>
+		  <div class="carousel-inner">
+		  	<% plant.otherimages.forEach(function(foundImage){ %>
+				    <div class="carousel-item active">
+				    	<!---------------Image of plants ------------------------------->
+				    	<img class="d-block w-100" src="<%= foundImage %>" alt="First slide">
+				    </div>			    
+			<% }) %>
+			    	<!-----------Image of plants end here----------------->
+		  </div>
+		  <a class="carousel-control-prev" href="#caruselPlantImage" role="button" data-slide="prev">
+		    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		    <span class="sr-only">Previous</span>
+		  </a>
+		  <a class="carousel-control-next" href="#caruselPlantImage" role="button" data-slide="next">
+		    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+		    <span class="sr-only">Next</span>
+		  </a>
+		</div> 
+	<div class="img-big-wrap">
+
+</aside>
+			<aside class="col-sm-7">
+	<article class="card-body p-5">
+		<!-----------------Plant name-------------------------->
+
+		<h3 class="title mb-3"><%= plant.name %></h3>
+		
+		<hr>
+
+	<p class="price-detail-wrap"> 
+		<span class="price h3 text-warning"> 
+		<!-----------------Plant Price details-------------------------->		
+		<span class="currency"> Rs.</span><span class="num"><%= plant.price %></span>
+		<span class="currency">/-</span>
+		</span> 
+		 
+	</p> <!-- price-detail-wrap .// -->
+
+	<dl class="item-property">
+		  <dt>Description</dt>
+		  <dd>
+		  	<p style="text-align: justify;">
+		  		<%= plant.description %>
+		  	</p>
+		  </dd>
+	</dl>
+	<br>
+	<br>
+	<dl class="param param-feature"> <dt style="font-family: robot,monospace;
+	font-size: 18px;"># In this pack, you will get beautiful <span class="text-lowercase"><%= plant.name %></span> plant.</dt>
+	  
+	</dl>  <!-- rating image .// -->
+	<dl class="param param-feature">
+	  <dt>Ease of care     
+	  	<% if(plant.difficultyLevel===1){ %>
+	  		<img id ="RatingsImage1" src="/resources/RatingsStar/Ratin1Star.png" alt=" 1 star" height="100px">
+	  	<% } else if(plant.difficultyLevel===2){ %>
+	  		<img id ="RatingsImage2" src="/resources/RatingsStar/Ratin2Star.png" alt=" 2 star" height="100px">  	
+	  	<% } else if(plant.difficultyLevel===3){ %>
+	  		<img id ="RatingsImage3" src="/resources/RatingsStar/Ratin3Star.png" alt=" 3 star" height="100px">
+	  	<% } else if(plant.difficultyLevel===4){ %>
+	  		<img id ="RatingsImage4" src="/resources/RatingsStar/Ratin4Star.png" alt=" 4 star" height="100px">
+	  	<% } else if(plant.difficultyLevel===5){ %>
+	  		<img id ="RatingsImage5" src="/resources/RatingsStar/Ratin5Star.png" alt=" 5 star" height="100px">
+	  	<% } %>
+	  </dt>
+	  
+	</dl>  <!-- item-property-delivery option .// -->
+	<dl class="param param-feature">
+	  <dt>Delivery</dt>
+	  <dd>Pan India Delivery</dd>
+	</dl>  <!-- item-property-end .// -->
+
+<hr>
+	<div class="row">
+		<div class="col-sm-5">
+			<dl class="param param-inline">
+			  <dt>Quantity: </dt>
+			  <dd>
+			  	<select class="form-control form-control-sm" style="width:70px;">
+			  		<option> 1 </option>
+			  		<option> 2 </option>
+			  		<option> 3 </option>
+			  		<option> 4 </option>
+			  		<option> 5 </option>
+			  	</select>
+			  </dd>
+			</dl>  <!-- item-property .// -->
+		</div> <!-- col.// -->
+		<div class="col-sm-7">
+			<dl class="param param-inline">
+				  <dt> POT VARIANTS: </dt>
+				  <dd>
+				  	<label class="form-check form-check-inline">
+					  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+					  <span class="form-check-label">Plastic</span>
+					</label>
+					<label class="form-check form-check-inline">
+					  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+					  <span class="form-check-label">Ceramic</span>
+					</label>
+				  </dd>
+			</dl>  <!-- item-property .// -->
+		</div> <!-- col.// -->
+	</div> <!-- row.// -->
+	<hr>
+	<a href="#" class="btn btn-lg btn-primary text-uppercase"> Buy now </a>
+	<a href="#" class="btn btn-lg btn-outline-primary text-uppercase"> <i class="fas fa-shopping-cart"></i> Add to cart </a>
+</article> <!-- card-body.// -->
+		</aside> <!-- col.// -->
+	</div> <!-- row.// -->
+</div> <!-- card.// -->
+
+
+</div>
+<!--container.//-->
+
+
+<br>
+<article class="bg-secondary mb-3" style="background-color: #f0f0f0;">  
+<div class="card-body ">
+
+	<div id=SpecMenuBar>
+		<div class="btn-group">
+		   <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#descriptionMenu" 	aria-expanded="false" aria-controls="collapseExample">
+		    DESCRIPTION
+		  </button>
+		   <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#specsMenu" 	aria-expanded="false" aria-controls="collapseExample">
+		    SPECIFICATION
+		  </button>
+		  <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#plantingMenu" 	aria-expanded="false" aria-controls="collapseExample">
+		    PLANTING AND CARE
+		  </button>
+		</div>
+<!-------------------------Page to add description information------------------------>
+		  	  <div id="descriptionMenu" class="collapseExample" data-parent="#SpecMenuBar">
+     			 	<div class="card-body">
+		       			 <p>The botanical name of Peace Lily Plant is Spathiphyllum. Peace Lily (Small) Plant is a very popular indoor houseplant. It is a clump-growing herbaceous perennial which produces white flowers that look like the hood of a cobra. Leaves are shiny and glossy, attractive even with no spathes.
+		       			 </p>
+		       			
+						
+						<br><br>
+
+						<h3>Plant Characterstics</h3>
+
+						<table class="table table-hover" id="careTable" border="1">
+						<tbody>
+						<tr>
+						<td>Common Name </td>
+						<td>Peace lily, Cobra plant.</td>
+						</tr>
+						
+						<tr>
+						<td>Flower Colour </td>
+						<td>Creamy-White.</td>
+						</tr>
+						<tr>
+						<td>Bloom Time </td>
+						<td>Spring or early summer.</td>
+						</tr>
+						<tr>
+						<td>Difficulty Level </td>
+						<td>Easy.</td>
+						</tr>
+						<tr><td colspan="2" style="text-align: center;">Maximum Reachable Height up to 40 centimeters </td>
+
+						</tr>
+						</tbody>
+						</table>
+
+	<br>
+						<dl class="moreInfo">
+							<dt>
+								<h3 class="headerChange">Peace Lily special feature</h3>
+							</dt>
+							<dd>
+								One of the rare indoor flowering plant 
+							</dd>
+							<dd>
+								Excellent air purifying plant. 
+							</dd>	
+	<br>
+							<dt>
+								Ornamental Use:
+							</dt>
+							<dd>
+								It makes an excellent container or house plant 
+							</dd>
+							<dd>
+								It Beautifies Your house 
+							</dd>	
+
+						</dl>
+
+<hr>
+		    		 	 <!------------------------------------------youtube video------------->
+		    		 	 <div>
+			    		 	 <iframe width="697" height="392" src="https://www.youtube.com/embed/Ei2syQCGz_Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+			    		 	 	
+			    		 	 </iframe>
+		    		 	 </div>
+		<br><br>
+		    		 	 <!--------------------------------Wikipedia links---------->
+		    		 	 <dl class="FurtherLnks">
+		    		 	 	<p>For further inmformartion please visit followig links...</p>
+		    		 	 	<dt style="padding-left: 3%;">
+		    		 	 		Wikipedia: 
+		    		 	 	
+		    		 	 	<a href="https://en.wikipedia.org/wiki/Spathiphyllum"> Peace Lily </a>
+		    		 	 	</dt>
+		    		 	 </dl>
+		   			</div>
+				</div>
+		<!------------------------------Page to add specification information-------------------->
+				  	<div id="specsMenu" class="collapse" data-parent="#SpecMenuBar">
+		     			 <div class="card-body">
+		       			 	 <table  class="table table-hover" id="careTable" border="1">
+								<tbody>
+                                <tr>
+								    <td>Plant Height</td>
+								    <td>12 inch (30 cm) </td>
+								</tr>
+								<tr>
+								<td>Plant Spread</td>
+								<td>5 inch (13 cm) </td>
+								</tr>
+								</tbody>
+							</table><br>
+                             <div>
+							*above specification are indicative only. actual dimensions may vary by +-10% <br><br>
+						  </div>
+		    		 	  	 <b>What makes it special:</b><br>
+                             <ul>
+                                 <li>One of the rarest indoor flowering plant.</li> <li>NASA recommended air purifier plant.</li> <li>Easy to care and low maintenance plant.</li> <li>Best for office desk, bedroom.</li>
+                             </ul>
+		    		 	</div>
+		   			</div>
+ <!----------------------------Page to add planting and caring information------------------------>
+   			  <div id="plantingMenu" class="collapse" data-parent="#SpecMenuBar">
+     			 <div class="card-body">
+       			  <!------------------------------------------------>
+					<b>Sunlight</b>
+					<br> 
+					<p>
+						<li>
+						Natural indirect / artificial bright light is ideal for peace lily plant growth.
+						</li>
+				       		 <br> 
+						<b>Soil</b>
+							 <br> 
+					  	<li>
+					  		The soil should be well drained and fertile, rich in organic content.
+					  	</li> 
+					     	 <br> 
+						<b>Watering</b>
+							 <br> 
+						<li>
+							Poke your finger/plain small stick into the soil to check the moisture.
+						</li> 
+						<li>
+							Apply 1 cup (Approx. 50 ml) water when the top soil (1-2 inch) in pot feels dry to touch.
+						</li> 
+						<li>
+							Apply water probably in the morning or evening time.
+						</li> 
+						<li>
+							Do not overwater the plant.
+						</li> 
+						<li>
+							As a rule of thumb, water the plant thoroughly in the summer and reduce 	watering in winter and rainy season.
+						</li>
+							<br> 
+						<b>Application of Fertilizer</b>
+							<br> 
+						<li>
+							Before application of fertilizer loosen the topsoil without disturbing the roots of the plant so it can uptake the nutrients and moisture.
+						</li>
+						<li>
+							During the main growing season (Feb to May, July to Sept.) feed the plant with organic fertilizer once a month.
+						</li> 
+						<li>
+							Apply water immediately after application of fertilizer.
+						</li>
+							<br> 
+						<b>Plant Protection</b>
+							<br> 
+						<li>
+							Remove dead, infected or damaged plant parts and discard them away from the plants.
+						</li> 
+						<li>
+							For any insect attack or disease, you can use Neem oil, Eucalyptus oil or Citrus oil spray for primary treatment.
+						</li> 
+							<br>
+						<b>Don'ts</b>
+						<br> 
+						<li>
+							Do not over water the plant especially when pot does not have drainage holes.
+						</li> 
+						<li>
+							keep away from the AC Vents.
+						</li>
+
+<br>
+
+						<h3 class="headerChange">Peace Lily care</h3>
+						<p>
+							<b>Initial care for 1-2 weeks after receiving plant at your location:</b> 
+						</p>
+						<li>
+							Keep the plant in Natural indirect /Artificial bright Light.
+						</li>
+					 	<li>
+					 		Poke your finger/plain small stick into the soil to check the moisture.
+					 	</li>
+					 	<li>
+					 		apply 3 cup (Approx. 150 ml) water when top soil (1-2 inches) feels dry to touch.
+					 	</li>
+					 	<li>
+					 		Do not re-pot for min. 2 weeks after receiving it.
+					 	</li>
+					 		<br>
+					 	<b>Key requirements to keep plant healthy:</b>
+					 	<p>
+					 </p>
+				 <table class="table table-hover" id="careTable" border="1">
+					<tbody>
+						 <tr>
+					 		<td>Sunlight </td>
+					 		<td>Natural indirect /artificial bright light.</td>
+					 	</tr>
+ 					 	<tr>
+					 		<td>Watering </td>
+					 		<td>Apply 3 cup (Approx. 150 ml) water when the topsoil (1-2 inch) in pot feels dry to touch.</td>
+					 	</tr>
+					 	<tr>
+					 		<td>Soil </td>
+					 		<td>Soil should be well drain and fertile, rich in organic content.</td>
+					 	</tr>
+					 	<tr>
+					 		<td>Temperature </td>
+					 		<td>18 to 24 degree Celsius</td>
+					 	</tr>
+					 	<tr>
+					 		<td>Fertilizer </td>
+					 		<td>Apply organic fertilizer once a month.</td>
+					 	</tr>
+					 </tbody>
+ 				</table>
+
+       			  <!------------------------------------------------>
+    		</div>
+   		 </div>
+		   
+		
+	</div>
+</div>
+<br><br><br>
+</article>
+<%- include("../partials/footer"); -%>

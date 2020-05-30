@@ -1,0 +1,232 @@
+<%- include("../partials/adminHeader"); -%>
+
+<div id="addPlantForm" class="container">
+ 
+    <form method="POST" action="/admin/plant" id="mainForm" enctype="multipart/form-data">
+       <fieldset> 
+       <legend style="color:#6c736f; z-index:1; ">ADD PLANT </legend>
+      
+        <div class="row">
+          <div class="col-md-8">
+             <div class="form-group ">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Plant Name" required>
+              </div>
+             <!--Short Description-->
+            <div class="form-group">
+              <label for="about">About</label>
+              <input type="text" class="form-control" name="about" id="about" placeholder="Short Description"  required>
+            </div>
+            <!--large Description-->
+            <div class="form-group">
+              <label for="about">Description</label>
+              <textarea class="form-control" id="description" name="description" placeholder="Full Description" rows="4"></textarea>
+            </div>            
+          </div>  
+          <div  class="col-md-4">          
+            <div class="imagePreview" id="imagePreview">
+              <img src="" class="imagePreviewImage" alt="imagePreview">
+              <span class="imageSpan">Image Preview</span>
+            </div>
+            <div class="input-group mb-2">
+                <div class="custom-file">
+                  <input required type="file" class="custom-file-input" id="inpFile" name="inpFile" accept="image/*" />
+                  <label class="custom-file-label" for="image">Choose file</label>
+                </div>
+            </div>
+          </div>          
+        </div>
+<br>
+<hr>
+
+        <!--wikipedia And youtube Link-->
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="youtube">Youtube</label>
+            <input type="url" class="form-control" id="youtube" name="youtube" placeholder="Youtube URL">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="wikipedia">Wikipedia</label>
+            <input type="url" class="form-control" id="wikipedia" name="wikilink" placeholder="WikiPedia Link">
+          </div>          
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="price">Price</label>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="price">Rs.</span>
+              </div>
+              <input type="number"  id="price" name="price" class="form-control" placeholder="100" step="10.00" min="10" required aria-label="price" aria-describedby="price">
+            </div>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="category">Category</label>
+            <select id="category" name="category" class="form-control">
+            <!--================================================================-->
+            <!-- category from database and make it select-->
+              <% childNav.forEach(function(category){ %>
+                <option value="<%= category._id %>"> 
+                    <%= category.title %> 
+                </option>
+              <% }) %>
+            <!--================================================================-->          
+            </select>
+          </div>
+          <div class="form-group col-md-2">
+            <label for="difficulty">Difficulty</label>
+            <select id="difficulty" name="difficulty" class="form-control">                
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+                <option value="4">Four</option>
+                <option selected value="5">Five</option>
+            </select>
+          </div>
+        </div> 
+        <hr style="height:auto;">
+          <div class="row">
+          <div class="col-md-4">  
+              <div class="contain" id="containerSun">
+                <h4 class="careHeads">SUNLIGHT<i id="sunlightPlus" class="fa fa-plus"></i></h4>
+                <input id="sunlightInput" class="careInputs" type="text" placeholder="Add New Item" >
+                <ul  id="sunlight" class="careUL">
+                  
+                </ul>
+              </div>
+          </div>
+          <div class="col-md-4">
+               <div class="contain" id="containerSoil">
+                <h4 class="careHeads">SOIL<i id="soilPlus"  class="fa fa-plus"></i></h4>
+                <input id="soilInput" class="careInputs" type="text" placeholder="Add New Item" >
+                <ul  id="soil" class="careUL">
+                 
+                </ul>
+              </div>
+          </div>
+          <div class="col-md-4">
+               <div class="contain" id="containerWater">
+                <h4 class="careHeads">WATER<i id="waterPlus" class="fa fa-plus"></i></h4>
+                <input id="waterInput" class="careInputs" type="text" placeholder="Add New Item" >
+                <ul id="water" class="careUL">
+                 
+                </ul>
+              </div>
+          </div>
+        </div>  
+        
+        <div class="row">    
+            <div class="form-group col-md-5 ">
+              <label for="feature">Features</label>
+              <textarea class="form-control" id="feature" name="features" placeholder="Features" rows="2"></textarea>
+            </div>
+            <div class="form-row align-items-center">
+              <div class="col-auto">
+                <div class="input-group mb-2 col-md-auto">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">Height</div>
+                  </div>
+                  <input type="number" step="0.01" min="0.50" class="form-control" name="height" id="specification" required placeholder="1-inch">
+                </div>
+              </div>
+              <div class="col-auto">         
+                <div class="input-group mb-2 col-md-auto">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">Spread</div>
+                  </div>
+                  <input type="number" step="0.01" min="0.50" class="form-control" name="spread" id="specification" required placeholder="1-inch">
+                </div>
+            </div>
+        </div>
+      </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="uses">Uses</label>
+              <textarea class="form-control" id="uses" name="uses" placeholder="uses" rows="2"></textarea>
+          </div>
+           <div class="form-group col-md-6">           
+             <div class="col-auto">
+              <label for="stock">   Quantity</label>
+                <div class="input-group mb-2 col-md-auto">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">STOCK</div>
+                  </div>
+                  <input type="number" step="1" min="10" class="form-control" name="quantityAvailable" id="stock" required placeholder="10pcs">
+                </div>
+              </div>
+          </div>
+        </div>
+
+       
+      </fieldset>
+    </form>  
+  
+
+         <div style="margin:auto; margin-top:2%;" class="form-group">
+          <button form="mainForm" type="submit" class="btn btn-primary">SUBMIT</button>
+        </div>     
+</div>
+<script>
+const inpFile=document.getElementById('inpFile');
+  const previewContainer =document.getElementById('imagePreview');
+  const previewImage=previewContainer.querySelector(".imagePreviewImage");
+  const previewDefaultText=previewContainer.querySelector(".imageSpan");
+
+  inpFile.addEventListener("change",function () {
+    const file =this.files[0];
+    if(file){
+      const reader =new FileReader();
+      previewDefaultText.style.display="none";
+      previewImage.style.display="block";
+      reader.addEventListener("load",function(){
+        previewImage.setAttribute("src",this.result);
+      });
+      reader.readAsDataURL(file);
+    }else{
+      previewDefaultText.style.display=null;
+      previewImage.style.display=null;
+    }
+  })
+
+
+    var sunlight=[addItem("#sunlightInput","sunlight","#sunlightPlus")];
+    var water=[addItem("#waterInput","water","#waterPlus")];
+    var soil=[addItem("#soilInput","soil","#soilPlus")];
+
+$('#mainForm').on('keyup keypress', function(e) {
+  var keyCode = e.keyCode || e.which;
+  if (keyCode === 13) { 
+    e.preventDefault();
+    return false;
+  }
+});
+//javascript function which has been called for ebery element of
+    //TO ADD LIST ITEMS 
+  function addItem(input,ul,plus){
+    var items=[];
+      $(input).keypress(function(event){
+      var keyCode = event.keyCode || event.which;
+        if(keyCode===13){
+          var newText= $(this).val();
+          if(newText!=""){
+            items.push(newText);   
+            $("#"+ul).append("<li value=newText  class='careLI'><span class='careSpan'> <i class='fa fa-trash'></i> </span>"+newText+"<input name='"+ul+"[]' value='"+newText+"'' type ='hidden'></li>");
+            $(this).val("");
+            }
+        }
+      });
+      $("#"+ul).on("click","span",function(event){
+        $(this).parent().fadeOut(200,function(){
+          $(this).remove();         
+        });
+         event.stopPropagation();
+      });
+      $(plus).click(function () {
+        $(input).fadeToggle(300);
+          
+      })
+    return items; 
+  }
+</script>
+
+<%- include("../partials/adminFooter"); -%>

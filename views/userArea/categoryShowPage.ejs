@@ -1,0 +1,45 @@
+<%- include("../partials/header"); -%>
+
+  <main role="main" class="container" style="margin-top: 1%;">
+       <div class="container">
+         <% if(error && error.length > 0) { %>
+           <div class="alert alert-danger" role="alert"><%=error %></div>
+         <% } %>
+         <% if(success && success.length > 0) { %>
+           <div class="alert alert-success" role="alert"><%= success %></div>
+         <% } %>
+         <% if(info && info.length > 0) { %>
+           <div class="alert alert-info" role="alert"><%= info %></div>
+          <% } %>
+        </div> 
+    </main><!-- /.container -->
+<div class="container">
+	<div class="row">
+		<% plant.forEach(function(foundPlant){ %>
+			<div class="col-md-6 col-lg-3 ">
+				<div class="product">
+					<div class="img-holder">
+					    <a href="/product/<%= foundPlant._id %>"><img class="img-fluid" src="<%= foundPlant.image %>" alt="<% foundPlant.name %>"></a>					    
+					</div>											
+					<div class="text py-3 pb-4 px-3 text-center">	
+						<h3><%= foundPlant.name %></h3>		
+						<div class="row">
+							<div class="col-md-6">								
+	    						<p><span>Rs. <%= foundPlant.price %></span></p>
+	    					</div>
+	    					<div class="col-md-3">								
+	    						<a class="btn btn-info productButtons" href="/addToCart/<%= foundPlant._id %>"><i class="fas fa-shopping-cart"></i></a>
+	    					</div>
+	    					<div class="col-md-3">								
+	    						<a class="btn btn-secondary btn-info" href=""><i class="fas fa-shopping-bag"></i></a>
+	    					</div>									    					
+						</div>						
+					</div>
+				</div>
+			</div>
+		<% }) %>
+	</div>		
+</div>
+
+
+<%- include("../partials/footer"); -%>

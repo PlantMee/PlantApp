@@ -1,0 +1,124 @@
+body{
+	font-family: 'Raleway',sans-serif;
+}
+#brandText{
+	font-family: 'Raleway',sans-serif;
+
+}
+#navBarItems{
+	font-family: 'Raleway',sans-serif;
+}
+
+
+/*AddPLantFormCSS*/
+#addPlantForm{
+    margin: 3% auto;
+    border: solid 0.1px #e0dcdc;
+    padding: 25px;
+  }
+.careHeads{
+	background:#2980B9;
+	color: white;
+	margin: 0;
+	padding: 10px 20px;
+	text-transform: uppercase;
+	font-size:18px;	
+	font-weight: normal;
+}
+
+.careUL{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.careLI{
+	background: #fff;
+	height: 40px;
+	line-height: 40px;
+	color: #666;
+}
+
+.careLI:nth-child(2n){
+	background: #f7f7f7
+}
+.careSpan{
+	background: #e74c3c;
+	height: 40px;
+	margin-right:20px;
+	text-align: center;
+	color: white;
+	width: 0;
+	display: inline-block; 
+	transition: 0.2s linear;
+	opacity: 0;
+}
+.careLI:hover span{
+ width: 40px;
+ opacity: 1.0;
+}
+
+.careInputs{
+	font-size: 18px;
+	background-color: #f7f7f7;
+	width:100%;
+	padding: 13px 13px 13px 20px; 
+	box-sizing: border-box;
+	color:#2980B9;
+	border: 3px solid rgba(0,0,0,0);
+}
+.careInputs:focus{
+	background: white;
+	border:2 px solid #2980B9;
+	outline: none;
+}
+
+.contain{
+	width: auto;
+	margin: auto;
+	background: #f7f7f7;
+}
+.fa-plus{
+	float: right;
+}
+#imagePreview{
+	width:95%;
+	margin-left: 2%;
+	min-height:90%;
+	margin-bottom: 1%;
+	border-radius: 4%;
+	border: 1px solid #dddddd;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: bold; 
+}
+.imagePreviewImage{
+	border-radius: 4%;
+	display: none;
+	width: 100%;
+	object-fit:contain;
+}
+#imageInput{
+	margin-bottom: 2%;	
+}
+/*===================================================*/
+	
+/*viewAllCss*/
+.imagePreviewImageEdit{
+	border-radius: 4%;
+    display: block;
+    border: 1px solid #dddddd;
+	width: 100%;
+	object-fit:contain;
+}
+.imagePreviewEdit{
+	width:95%;
+	margin-left: 2%;
+	min-height:90%;
+	margin-bottom: 1%;
+	border:none !important;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: bold; 
+}

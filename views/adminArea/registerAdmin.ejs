@@ -1,0 +1,102 @@
+<%- include("../partials/adminHeader"); -%>
+<!--^^^^^^^^^^^^^^^^^HEADER^^^^^^^^^^^^^^^^^^^^-->   
+     <div id="login-overlay" class="modal-dialog">
+      <div class="modal-content" >
+        <div style="background-color: #a0e2f2;">
+          <div class="modal-header" style="margin:auto;justify-content: center;">
+              <h4 class="modal-title" id="myModalLabel">Plantae Admin Register</h4>
+          </div>
+        </div>   
+            <div class="modal-body" style="margin-top:7%;">
+
+                <form  id="registerForm" action="/admin/" method="POST" >
+<!---form--->         <div class="row">
+                        <div class="col">
+                          <label for="firstName">First Name</label>
+                          <input type="text" id="firstName" name="admin[firstName]" class="form-control" placeholder="First name">
+                        </div>
+                        <div class="col">
+                          <label for="lastName">Last Name</label>
+                          <input type="text" id="lastName" name="admin[lastName]" class="form-control" placeholder="Last name">
+                        </div>
+                      </div>
+<!--------------------------------------separator---------------------------------------------------------------> 
+<hr style="margin-bottom:4%;"> 
+                     <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" name="admin[email]" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="example@gmail.com">
+                        <small id="emailHelp" class="form-text text-muted">**Please remember this..</small>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" name="firstPass" required class="form-control" id="confirmPassword" placeholder="Password"  onkeyup='check();'>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="password">Re Enter Password**</label>
+                            <input type="password" name="password" class="form-control" id="password" required placeholder="Password"  onkeyup='check();'>
+                        </div>
+                      </div>
+                      
+                        <span id="message"></span>
+                      
+                      
+                      
+<!--------------------------------------separator--------------------------------------------------------------->
+<hr>                     <div class="form-row">                             
+                             <div class="form-group col-md-5">
+                                <label for="phoneNo">Phone**</label>
+                                <input type="Number" name="admin[phone]" class="form-control" id="phoneNo" placeholder="+91 __________  " min="6000000000" pattern="{10,10}" title="Phone Number Should Contain 10 digits" required>
+                            </div>
+                            <div class="form-group col-md-6 form-check-inline" style="margin-bottom: 0;margin-top:5%;">
+                               <label>Gender</label>
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" name="admin[gender]" id="male" value="Male" checked>
+                                  <label class="form-check-label" for="male">
+                                   Male<span>&nbsp </span>
+                                  </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" type="radio" name="admin[gender]" id="female" value="Female" >
+                                  <label class="form-check-label" for="female">
+                                    Female
+                                  </label>
+                                </div>
+                             </div>
+                        </div>
+                         <div class="form-group">
+                            <label for="secretKey">Secret Key</label>
+                            <input type="Number" name="admin[secret]"class="form-control" id="secretKey" placeholder="Confidential" required>
+                            <small id="secretKey" class="form-text text-muted">**Your Roll No..</small>
+                         </div>
+                         <div class="form-group form-check">
+                            <input type="checkbox" name="isSuperUser" value="true" class="form-check-input" id="isUperUser">
+                            <label class="form-check-label" for="isSuperUser">SuperUser</label>
+                         </div>
+                                                           
+                  <div class="form-group">
+                  <div class="input-group-addon text-center">
+                      <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-success pull-right">                  
+                  </div>
+                </div>
+                </form>
+              </div><!---modal-body--->
+          </div>
+       </div>
+<script>
+    var check = function() {
+    var password =document.getElementById('password')
+    var confirmPassword= document.getElementById('confirmPassword')
+        if(password.value){    
+            if (password.value === confirmPassword.value) {
+            document.getElementById('message').style.color = 'green';
+            document.getElementById('message').innerHTML = 'Passwords Match';
+          } else {
+            document.getElementById('message').style.color = 'red';
+            document.getElementById('message').innerHTML = 'Passwords do not match';
+          }
+        }
+    }
+</script>
+<!--==================FOOTER===================-->    
+<%- include("../partials/adminFooter"); -%>

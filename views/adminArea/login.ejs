@@ -1,0 +1,36 @@
+<%- include("../partials/adminHeader"); -%>
+<!--^^^^^^^^^^^^^^^^^HEADER^^^^^^^^^^^^^^^^^^^^-->   
+<div id="login-overlay" class="modal-dialog">
+    <div class="modal-content" >
+        <div style="background-color: #a0e2f2;">
+          <div class="modal-header" style="margin:auto;justify-content: center;">
+              <h4 class="modal-title" id="myModalLabel"><i class="fas fa-users-cog"></i>Admin Login</h4>
+          </div>
+        </div>   
+            <div class="modal-body" style="margin-top:7%;">
+				<form action="/admin/login" method="POST">
+					 <div class="form-group">
+					    <label for="username">Email address</label>
+					    <input type="email" class="form-control" name="username" id="username" aria-describedby="emailHelp" placeholder="example@mail.com">					    
+					  </div>
+
+					  <div class="form-group">
+					    <label for="password">Password</label>
+					    <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+					  </div>
+					  <div class="form-group">
+					    <label for="secret">Secret Code</label>
+					    <input type="number" name="secret" class="form-control" id="secret" placeholder="Secret Code">
+					    <small id="emailHelp" class="form-text text-muted">**Provided By SuperUser </small>
+					  </div>					
+					   <div class="input-group-addon text-center">
+	                      <input type="submit" name="submit" id="submit" value="LOGIN" class="btn btn-primary pull-right">                  
+	                  </div>
+				</form>
+			</div>
+	</div>		
+</div>
+
+<!--===================FOOTER======================-->   
+<%- include("../partials/adminFooter"); -%>
+   
