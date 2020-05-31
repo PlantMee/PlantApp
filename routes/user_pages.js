@@ -165,7 +165,18 @@ router.get("/addToCart/:id",Validation.isLoggedIn,(req,res)=>{
 });
 //............................
 
-
+//=====USER PROFILE ROUTE======
+router.get("/:id/profile",Validation.isLoggedIn,(req,res)=>{
+	User.findOne(req.user._id,(err,foundUser)=>{
+		if(err){
+			req.flash("error",err.message);
+			return res.redirect("back");
+		}else{		
+			res.render("userArea/userProfile",{user:foundUser});
+		}
+	})
+});
+///////////////////////////////
 
 
 
