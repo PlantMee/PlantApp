@@ -13,11 +13,12 @@ const express 		=require("express"),
 	  flash         =require("connect-flash"),
 	  methodOverride= require("method-override");
 
-	  var UserPages				=require("./routes/user_pages"),
-	  	  ProductCart	=require("./routes/productCart"),
+	  var UserPages			=require("./routes/user_pages"),
+	  	  ProductCart		=require("./routes/productCart"),
 	  	  adminPages		=require("./routes/adminRoutes"),
 	  	  adminProductRoutes=require("./routes/adminProductRoutes"),
-	  	  Admin 		=require("./models/admin");
+	  	  userProfile		=require("./routes/userProfile"),
+	  	  Admin 		    =require("./models/admin");
 	   
 //SETTING APP VARIABLE
 const app=express();
@@ -74,6 +75,7 @@ app.use(function (req,res,next){
 app.use(UserPages);
 app.use("/admin",adminPages);
 app.use("/admin/plant",adminProductRoutes);
+app.use(userProfile);
 app.use(ProductCart);
 
 //=======START THE SERVER================
