@@ -15,17 +15,27 @@ router.get("/:id/profile",Validation.isLoggedIn,(req,res)=>{
 			req.flash("error",err.message);
 			return res.redirect("back");
 		}else{		
-			res.render("userArea/userProfile",{user:foundUser});
+			res.render("userArea/userProfile",{user:foundUser,cart:foundUser.cart});
 		}
 	})
 });
 ///////////////////////////////
 //personal info edit page
 router.get("/:id/edit/personal",Validation.isLoggedIn,(req,res)=>{
-	res.send("THIS IS THE PAGE EHERE USDER WILL ABLE TO UPDATE HIS DATA")
+	res.send(req.body);
 });
+//....................................................................
+//user address data route
+router.get("/:id/edit/address",Validation.isLoggedIn,(req,res)=>{
+	res.send("THIS IS USER ADDRESS ROUTE WHICH WILL BE HERE");
+})
+//....................................................................
 
+//user password data can be changed using here
+router.get("/:id/edit/password",Validation.isLoggedIn,(req,res)=>{
+	res.send("THIS IS THE PASWORD EDI PAGE");
+})
+//....................................................................
 
 ///////////////////////////////
-
 module.exports=router;

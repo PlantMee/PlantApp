@@ -42,7 +42,7 @@
           <% if(!currentUser){ %>  
             <li class="nav-item">
                 <a class=" btn btn-default nav-link active" href="/login">
-                <i class="fas fa-shopping-cart"></i>(0)</a>
+                <i class="fas fa-shopping-cart"></i>0</a>
               </li>
               <li class="nav-item">
                 <a class="  btn btn-info nav-link" href="/login">
@@ -52,10 +52,10 @@
           <% }else{ %>
               <li class="nav-item">
                 <a class=" btn btn-default nav-link active" href="/cart">
-                <i class="fas fa-shopping-cart"></i>(<%= currentUser.cart.length %>)</a>
+                <i class="fas fa-shopping-cart"></i><%= currentUser.cart.length %>  </a>
               </li>
               <li class="nav-item">
-               <a class="nav-link d-block" href="<%=currentUser._id%>/profile">
+               <a class="nav-link d-block" href="<%= currentUser._id %>/profile">
                   <i class="fas fa-user-circle"></i> Profile
                </a>
               </li>               
