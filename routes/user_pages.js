@@ -24,10 +24,25 @@ router.get("/",function (req,res) {
 		data.childCategory.forEach(function(newData){		
 		})
 	});	 
-	res.render("userArea/index",{page:parentNav});	
+	Plant.find({},(err,plantData)=>{
+
+		res.render("userArea/index",{page:parentNav,product:plantData});		
+	})
+	
 });
 ////////////////////////////////////
-
+///>>>>>ALL PRODUCTS SHOW PAGE<<<<<<<<<<
+router.get("/allProducts",(req,res)=>{
+	Plant.find({},(err,foundPlant)=>{
+		if (err){
+			req.flash("error","SOMETHING WENT WRONG PLEASE RETRY AFTER SOMETIME");
+			res.redirect("back");
+		}else{
+			res.render("userArea/allProducts",{plant:foundPlant});
+		}
+	})
+})
+///////////////////////////////////
 ///>>>>>CATEGORY PAGES<<<<<<<<<<
 router.get("/category/:id",(req,res)=>{
 	Plant.find({category:req.params.id},(err,foundPlant)=>{
