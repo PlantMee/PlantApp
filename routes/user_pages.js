@@ -4,6 +4,8 @@ const express = require("express"),
 const Page =require("../models/page");
 var   ChildCategory=("../models/childCategory");
 var   Plant 		=require("../models/plantModel");
+var   Subscribe  	=require("../models/userSubscribed");
+var   ContactUs    	=require("../models/contactUs.js");
 const User 			=require("../models/admin");
 const Validation 	=require("../middleware/userValidation.js");
 
@@ -18,6 +20,8 @@ var parentNav=[];
 	 	}
 	 	return parentNav;
 	});
+
+ //HOME PAGE DATA..........................
 ///>>>>>MAIN ROUTE<<<<<<<<<<
 router.get("/",function (req,res) {
 	parentNav.forEach(function(data){		
@@ -42,7 +46,48 @@ router.get("/allProducts",(req,res)=>{
 		}
 	})
 })
-///////////////////////////////////
+/////////////////////////////////////
+//SUBSCRIBE TO NEWS LETTER
+router.post("/subscribe",(req,res)=>{
+	Subscribe.findOne({email:req.body.SubEmail},(err,data)=>{
+		if(err){
+			req.flash("error",err.message);
+			res.redirect("back");
+		}else if (data){
+			req.flash("info","THANKS!! YOUR EMAIL IS ALREADY SUBSCRIBED FOR NEWS");
+			return	res.redirect("back");
+		}else{			
+			Subscribe.create({email:req.body.SubEmail},(err,createdEntry)=>{
+				if(err){
+					req.flash("error",err.message);
+					res.redirect("back");
+				}else{
+					req.flash("success","SUCCESSFULLY SUBSCRIBED TO NEWSLETTER");
+					res.redirect("/");
+				}
+			})
+		}
+	})
+})
+//CONTACT THE PLANTAE TEAM
+router.post("/plantae/contactUs",(req,res)=>{
+	ContactUs.findOne({email:req.body.contact.email},(err,data)=>{
+		if(err){
+			req.flash("error",err.message);
+			res.redirect("back");
+		}else if(data){
+			req.flash("info","YOU HAVE ALREADY SUBMIITED A CONTACT REQUEST EARLIER PLEASE WAIT BEFORE SENDING AGAIN..	");
+			return	res.redirect("back");
+		}else{
+			ContactUs.create(req.body.contact,(err,createdEntry)=>{
+				req.flash("success","WE WILL TRY TO CONTACT YOU AS SOON AS POSSIBLE");
+				res.redirect("/");
+			})
+		}
+	})
+})
+
+////HOME PAGE DATA END........................................
 ///>>>>>CATEGORY PAGES<<<<<<<<<<
 router.get("/category/:id",(req,res)=>{
 	Plant.find({category:req.params.id},(err,foundPlant)=>{

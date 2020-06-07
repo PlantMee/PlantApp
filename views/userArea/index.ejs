@@ -1,5 +1,48 @@
 <%- include("../partials/header"); -%>
+    <style>
 
+
+h1 {
+  font-size: 50px;
+  word-break: break-all;
+}
+
+.row {
+  margin: 10px -16px;
+}
+
+/* Add padding BETWEEN each column */
+.row,
+.row > .column {
+  padding: 8px;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.33%;
+  display: none; /* Hide all elements by default */
+}
+
+/* Clear floats after rows */ 
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Content */
+.content {
+  background-color: white;
+  padding: 10px;
+}
+
+/* The "show" class is added to the filtered elements */
+.show {
+  display: block;
+}
+
+</style>
 <nav style="padding:0;" class="navbar navbar-expand-md navbar-dark bg-dark ">
       <div class="container">         
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,7 +94,7 @@
                                 <p>Participtae in our initiative for creating more greenery..</p>
                                 <div class="welcome-btn-group">
                                     <a href="#" class="btn plantae-btn mr-30">GET STARTED</a>
-                                    <a href="#" class="btn plantae-btn active">CONTACT US</a>
+                                    <a href="#contactArea" class="btn plantae-btn active">CONTACT US</a>
                                 </div>
                             </div>
                         </div>
@@ -69,7 +112,7 @@
                 <div class="col-12">
                     <!-- Section Heading -->
                     <div class="section-heading text-center">
-                        <h2>EXPLORE THE PLANT REALM</h2>
+                        <h2><i class="fab fa-wpexplorer"></i>&nbsp; EXPLORE THE PLANT REALM</h2>
                         <p>We are here to serve your plant love at best.</p>
                     </div>
                 </div>
@@ -87,7 +130,7 @@
                             </div>
                             <!-- Content -->
                             <div class="service-content">
-                                <h5>Plants Love</h5>
+                                <h5>Love For Plants</h5>
                                 <p>This is the easiest and most affordable solution to take care of your plant love combined with thousands of garden scaping elements. </p>
                             </div>
                         </div>
@@ -148,15 +191,15 @@
 
     
 
-    <!-- ##### Portfolio Area Start ##### -->
-    <section class="plantae-portfolio-area section-padding-100-0">
+    <!-- ##### Categories Area Start ##### -->
+    <section class="plantae-Categories-area section-padding-100-0">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <!-- Section Heading -->
                     <div class="section-heading text-center">
-                        <h2>OUR PORTFOLIO</h2>
-                        <p>We devote all of our experience and efforts for creation</p>
+                        <h2><i class="fas fa-warehouse"></i>&nbsp;COLLECTIONS AVAILABLE WITH US</h2>
+                        <p>Most of the gardeninig essentials are available.</p>
                     </div>
                 </div>
             </div>
@@ -165,120 +208,47 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <div class="plantae-portfolio-filter">
-                        <div class="portfolio-filter">
-                            <button class="btn active" data-filter="*">All</button>
-                            <button class="btn" data-filter=".design">Coffee Design</button>
-                            <button class="btn" data-filter=".garden">Garden</button>
-                            <button class="btn" data-filter=".home-design">Home Design</button>
-                            <button class="btn" data-filter=".office-design">Office Design</button>
+                    <div class="plantae-Categories-filter">
+                        <div class="Categories-filter">
+                            <button class="btn active"onclick="filterSelection('PLANTS')"> <img src="/resources/HomePage/plantLogoA.svg" style="width:19.37px; height:auto;">&nbsp;Plants</button>
+                            <button class="btn" onclick="filterSelection('SEEDS')"><img src="/resources/HomePage/seedLogoA.png" style="width:19.37px; height:auto;">&nbsp;Seeds</button>
+                            <button class="btn" Onclick="filterSelection('POTS & PLANTERS')"><img src="/resources/HomePage/potLogoA.svg" style="width:19.37px; height:auto;">&nbsp;Planters</button>
+                            <button class="btn" onclick="filterSelection('TOOLS')"><img src="/resources/HomePage/toolLogoA.png" style="width:19.37px; height:auto;">&nbsp;Tools</button>
+                            <button class="btn" onclick="filterSelection('ACCESSORIES')"><img src="/resources/HomePage/fertilizerLogoA.svg" style="width:19.37px; height:auto;">&nbsp;Accessories</button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="row plantae-portfolio">
-
-                <!-- Single Portfolio Area -->
-                <div class="col-12 col-sm-6 col-lg-3 single_portfolio_item design home-design wow fadeInUp" data-wow-delay="100ms">
-                    <!-- Portfolio Thumbnail -->
-                    <div class="portfolio-thumbnail bg-img" style="background-image: url(img/bg-img/16.jpg);"></div>
-                    <!-- Portfolio Hover Text -->
-                    <div class="portfolio-hover-overlay">
-                        <a href="img/bg-img/16.jpg" class="portfolio-img d-flex align-items-center justify-content-center" title="Portfolio 1">
+            <div class="row plantae-Categories">         
+              <% page.forEach(function(data){ %>
+                <% data.childCategory.slice(0,6).forEach(function(childItem){ %>
+                  <!-- Single Categories Area -->
+                  <div class="column col-12 col-sm-6 col-lg-3 single_Categories_item <%= data.text %> wow fadeInUp" data-wow-delay="100ms">
+                      <!-- Categories Thumbnail -->
+                      <div class=" content Categories-thumbnail bg-img" style="background-image: url(/resources/HomePage/categoryCoverA.jpg);"></div>
+                      <!-- Categories Hover Text --> 
+                      <div class="Categories-hover-overlay">
+                          <a href="/category/<%= childItem._id %>" class="Categories-img d-flex align-items-center justify-content-center" title="Categories 1">
+                              <div class="port-hover-text">
+                                  <h3><%= childItem.title %></h3>
+                                  <h5><img style="width:50px; height:auto;" src="/resources/HomePage/viewCategoryLogo.svg"></h5>
+                              </div>
+                          </a>
+                      </div>
+                  </div>
+                <%})%>  
+              <% } )%>  
+                <!-- Single Categories Area -->
+                <div class="col-12 col-lg-6 single_Categories_item home-design wow fadeInUp" data-wow-delay="300ms">
+                    <!-- Categories Thumbnail -->
+                    <div class="Categories-thumbnail bg-img" style="background-image: url(/resources/HomePage/categoryCoverC.jpg);"></div>
+                    <!-- Categories Hover Text -->
+                    <div class="Categories-hover-overlay">
+                        <a href="/allProducts" class="Categories-img d-flex align-items-center justify-content-center" title="Categories 7">
                             <div class="port-hover-text">
-                                <h3>Minimal Flower Store</h3>
-                                <h5>Office Plants</h5>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Single Portfolio Area -->
-                <div class="col-12 col-sm-6 col-lg-3 single_portfolio_item garden wow fadeInUp" data-wow-delay="200ms">
-                    <!-- Portfolio Thumbnail -->
-                    <div class="portfolio-thumbnail bg-img" style="background-image: url(img/bg-img/17.jpg);"></div>
-                    <!-- Portfolio Hover Text -->
-                    <div class="portfolio-hover-overlay">
-                        <a href="img/bg-img/17.jpg" class="portfolio-img d-flex align-items-center justify-content-center" title="Portfolio 2">
-                            <div class="port-hover-text">
-                                <h3>Minimal Flower Store</h3>
-                                <h5>Office Plants</h5>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Single Portfolio Area -->
-                <div class="col-12 col-sm-6 col-lg-3 single_portfolio_item garden design wow fadeInUp" data-wow-delay="300ms">
-                    <!-- Portfolio Thumbnail -->
-                    <div class="portfolio-thumbnail bg-img" style="background-image: url(img/bg-img/18.jpg);"></div>
-                    <!-- Portfolio Hover Text -->
-                    <div class="portfolio-hover-overlay">
-                        <a href="img/bg-img/18.jpg" class="portfolio-img d-flex align-items-center justify-content-center" title="Portfolio 3">
-                            <div class="port-hover-text">
-                                <h3>Minimal Flower Store</h3>
-                                <h5>Office Plants</h5>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Single Portfolio Area -->
-                <div class="col-12 col-sm-6 col-lg-3 single_portfolio_item garden office-design wow fadeInUp" data-wow-delay="400ms">
-                    <!-- Portfolio Thumbnail -->
-                    <div class="portfolio-thumbnail bg-img" style="background-image: url(img/bg-img/19.jpg);"></div>
-                    <!-- Portfolio Hover Text -->
-                    <div class="portfolio-hover-overlay">
-                        <a href="img/bg-img/19.jpg" class="portfolio-img d-flex align-items-center justify-content-center" title="Portfolio 4">
-                            <div class="port-hover-text">
-                                <h3>Minimal Flower Store</h3>
-                                <h5>Office Plants</h5>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Single Portfolio Area -->
-                <div class="col-12 col-sm-6 col-lg-3 single_portfolio_item design office-design wow fadeInUp" data-wow-delay="100ms">
-                    <!-- Portfolio Thumbnail -->
-                    <div class="portfolio-thumbnail bg-img" style="background-image: url(img/bg-img/20.jpg);"></div>
-                    <!-- Portfolio Hover Text -->
-                    <div class="portfolio-hover-overlay">
-                        <a href="img/bg-img/20.jpg" class="portfolio-img d-flex align-items-center justify-content-center" title="Portfolio 5">
-                            <div class="port-hover-text">
-                                <h3>Minimal Flower Store</h3>
-                                <h5>Office Plants</h5>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Single Portfolio Area -->
-                <div class="col-12 col-sm-6 col-lg-3 single_portfolio_item garden wow fadeInUp" data-wow-delay="200ms">
-                    <!-- Portfolio Thumbnail -->
-                    <div class="portfolio-thumbnail bg-img" style="background-image: url(img/bg-img/21.jpg);"></div>
-                    <!-- Portfolio Hover Text -->
-                    <div class="portfolio-hover-overlay">
-                        <a href="img/bg-img/21.jpg" class="portfolio-img d-flex align-items-center justify-content-center" title="Portfolio 6">
-                            <div class="port-hover-text">
-                                <h3>Minimal Flower Store</h3>
-                                <h5>Office Plants</h5>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Single Portfolio Area -->
-                <div class="col-12 col-lg-6 single_portfolio_item home-design wow fadeInUp" data-wow-delay="300ms">
-                    <!-- Portfolio Thumbnail -->
-                    <div class="portfolio-thumbnail bg-img" style="background-image: url(img/bg-img/22.jpg);"></div>
-                    <!-- Portfolio Hover Text -->
-                    <div class="portfolio-hover-overlay">
-                        <a href="img/bg-img/22.jpg" class="portfolio-img d-flex align-items-center justify-content-center" title="Portfolio 7">
-                            <div class="port-hover-text">
-                                <h3>Minimal Flower Store</h3>
-                                <h5>Office Plants</h5>
+                                <h3>VIEW ALL ITEMS</h3>
+                                <h5><img style="width:50px; height:auto;" src="/resources/HomePage/viewAllLogo.svg"></h5>
                             </div>
                         </a>
                     </div>
@@ -286,8 +256,9 @@
 
             </div>
         </div>
+        
     </section>
-    <!-- ##### Portfolio Area End ##### -->
+    <!-- ##### Categories Area End ##### -->
 
     <!-- ##### Testimonial Area Start ##### -->
     <section class="testimonial-area section-padding-100">
@@ -392,7 +363,7 @@
             </div>
 
             <div class="row">
-<!--.................................LAST FOUR PRODUCTS THTA HAVE BEEN ADDED........................ -->
+<!--.................................LAST FOUR PRODUCTS THAT HAVE BEEN ADDED........................ -->
                 <% product.slice(product.length-4,product.length).forEach(function(PData){ %>   
 
                    <div class="col-12 col-sm-6 col-lg-3">
@@ -507,22 +478,23 @@
     <!-- ##### Blog Area End ##### -->
 
     <!-- ##### Subscribe Area Start ##### -->
-    <section class="subscribe-newsletter-area" style="background-image: url(img/bg-img/subscribe.png);">
+    <section class="subscribe-newsletter-area" style="background-image: url(/resources/HomePage/newsletterBackground.jpg);">
         <div class="container">
             <div class="row align-items-center justify-content-between">
                 <div class="col-12 col-lg-5">
                     <!-- Section Heading -->
                     <div class="section-heading mb-0">
                         <h2>Join the Newsletter</h2>
-                        <p>Subscribe to our newsletter and get 10% off your first purchase</p>
+                        <p>Subscribe to our newsletter to stay updated with latest news from US. Also get 15% discount on your first purchase.
+                        <span style="font-size:12px; text-align:center; ">"" And don't be worried we only send very few emails.""</span></p>
                     </div>
                 </div>
                 <div class="col-12 col-lg-6">
                     <div class="subscribe-form">
-                        <form action="#" method="get">
-                            <input type="email" name="subscribe-email" id="subscribeEmail" placeholder="Enter your email">
-                            <button type="submit" class="btn plantae-btn">SUBSCRIBE</button>
-                        </form>
+                        <form action="/subscribe" method="POST">
+                            <input type="email" name="SubEmail" id="subscribeEmail" placeholder="Enter your email">
+                            <button type="submit" class="btn plantae-btn"><i class="fas fa-envelope"></i> &nbsp;  SUBSCRIBE</button>
+                        </form> 
                     </div>
                 </div>
             </div>
@@ -536,7 +508,7 @@
     <!-- ##### Subscribe Area End ##### -->
 
     <!-- ##### Contact Area Start ##### -->
-    <section class="contact-area section-padding-100-0">
+    <section id="contactArea" class="contact-area section-padding-100-0">
         <div class="container">
             <div class="row align-items-center justify-content-between">
                 <div class="col-12 col-lg-5">
@@ -547,26 +519,26 @@
                     </div>
                     <!-- Contact Form Area -->
                     <div class="contact-form-area mb-100">
-                        <form action="#" method="post">
+                        <form action="plantae/contactUs" method="POST">
                             <div class="row">
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="contact-name" placeholder="Your Name">
+                                        <input type="text" class="form-control" name="contact[userName]" id="contact-name" placeholder="Your Name" required>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
-                                        <input type="email" class="form-control" id="contact-email" placeholder="Your Email">
+                                        <input type="email" class="form-control" name="contact[email]" id="contact-email" placeholder="Your Email" required>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="contact-subject" placeholder="Subject">
+                                        <input type="text" name="contact[subject]" class="form-control" id="contact-subject" placeholder="Subject" required>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <textarea class="form-control" name="message" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+                                        <textarea class="form-control" name="contact[message]" id="message" cols="30" rows="10" placeholder="Message" required></textarea>
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -710,7 +682,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                                     <li><a href="#">Home</a></li>
                                     <li><a href="#">About</a></li>
                                     <li><a href="#">Service</a></li>
-                                    <li><a href="#">Portfolio</a></li>
+                                    <li><a href="#">Categories</a></li>
                                     <li><a href="#">Blog</a></li>
                                     <li><a href="#">Contact</a></li>
                                 </ul>
@@ -721,8 +693,60 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
             </div>
         </div>
     </footer>
-  
+
+
+
+
 <script>
+filterSelection ("PLANTS"); 
+function filterSelection(c) {
+  var x, i;
+  x = document.getElementsByClassName("column");
+  if (c == "all") c = "";
+  for (i = 0; i < x.length; i++) {
+    w3RemoveClass(x[i], "show");
+    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+  }
+}
+
+function w3AddClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+  }
+}
+
+function w3RemoveClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);     
+    }
+  }
+  element.className = arr1.join(" ");
+}
+
+
+// Add active class to the current button (highlight it)
+var btnContainer = document.getElementById("myBtnContainer");
+var btns = btnContainer.getElementsByClassName("btn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function(){
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+</script>
+
+  <!-- All Plugins js -->
+    <script src="js/plugins/plugins.js"></script> 
+<script>
+
     autoPlay();
 
   //FUNCTION TO GET AND AUTO PLAY YOUTUBE VIDEO FROM DATATAG
@@ -738,5 +762,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
           });
       });
   }
+
+ 
 </script>
 <%- include("../partials/footer"); -%>

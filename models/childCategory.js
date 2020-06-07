@@ -11,6 +11,9 @@ const childCategorySchema=mongoose.Schema({
 		type:String,
 
 	},
+	image:{
+		type:String
+	},
 	parentTag:{
 		type:mongoose.Schema.Types.ObjectId,
 		ref:"Page"
