@@ -14,6 +14,9 @@ const childCategorySchema=mongoose.Schema({
 	image:{
 		type:String
 	},
+	iconImage:{
+		type:String
+	},
 	parentTag:{
 		type:mongoose.Schema.Types.ObjectId,
 		ref:"Page"

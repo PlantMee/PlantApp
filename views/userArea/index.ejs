@@ -260,94 +260,6 @@ h1 {
     </section>
     <!-- ##### Categories Area End ##### -->
 
-    <!-- ##### Testimonial Area Start ##### -->
-    <section class="testimonial-area section-padding-100">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="testimonials-slides owl-carousel">
-
-                        <!-- Single Testimonial Slide -->
-                        <div class="single-testimonial-slide">
-                            <div class="row align-items-center">
-                                <div class="col-12 col-md-6">
-                                    <div class="testimonial-thumb">
-                                        <img src="img/bg-img/13.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="testimonial-content">
-                                        <!-- Section Heading -->
-                                        <div class="section-heading">
-                                            <h2>TESTIMONIAL</h2>
-                                            <p>Some kind words from clients about plantae</p>
-                                        </div>
-                                        <p>“plantae is a pleasure to work with. Their ideas are creative, they came up with imaginative solutions to some tricky issues, their landscaping and planting contacts are equally excellent we have a beautiful but also manageable garden as a result. Thank you!”</p>
-                                        <div class="testimonial-author-info">
-                                            <h6>Mr. Nick Jonas</h6>
-                                            <p>CEO of NAVATECH</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Single Testimonial Slide -->
-                        <div class="single-testimonial-slide">
-                            <div class="row align-items-center">
-                                <div class="col-12 col-md-6">
-                                    <div class="testimonial-thumb">
-                                        <img src="img/bg-img/14.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="testimonial-content">
-                                        <!-- Section Heading -->
-                                        <div class="section-heading">
-                                            <h2>TESTIMONIAL</h2>
-                                            <p>Some kind words from clients about plantae</p>
-                                        </div>
-                                        <p>“plantae is a pleasure to work with. Their ideas are creative, they came up with imaginative solutions to some tricky issues, their landscaping and planting contacts are equally excellent we have a beautiful but also manageable garden as a result. Thank you!”</p>
-                                        <div class="testimonial-author-info">
-                                            <h6>Mr. Nazrul Islam</h6>
-                                            <p>CEO of NAVATECH</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Single Testimonial Slide -->
-                        <div class="single-testimonial-slide">
-                            <div class="row align-items-center">
-                                <div class="col-12 col-md-6">
-                                    <div class="testimonial-thumb">
-                                        <img src="img/bg-img/15.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="testimonial-content">
-                                        <!-- Section Heading -->
-                                        <div class="section-heading">
-                                            <h2>TESTIMONIAL</h2>
-                                            <p>Some kind words from clients about plantae</p>
-                                        </div>
-                                        <p>“plantae is a pleasure to work with. Their ideas are creative, they came up with imaginative solutions to some tricky issues, their landscaping and planting contacts are equally excellent we have a beautiful but also manageable garden as a result. Thank you!”</p>
-                                        <div class="testimonial-author-info">
-                                            <h6>Mr. Jonas Nick</h6>
-                                            <p>CEO of NAVATECH</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ##### Testimonial Area End ##### -->
 
     <!-- ##### Product Area Start ##### -->
     <section class="new-arrivals-products-area bg-gray section-padding-100">
@@ -356,8 +268,8 @@ h1 {
                 <div class="col-12">
                     <!-- Section Heading -->
                     <div class="section-heading text-center">
-                        <h2>NEW PRODUCTS AVAILABLE</h2>
-                        <p>We have some new products, you must be excited.</p>
+                        <h2><img src="resources/HomePage/newProductLogo.svg" style="height:35px; padding-bottom:6px; width:30px;">&nbsp;NEW PRODUCTS AVAILABLE</h2>
+                        <p style="padding-left: 39px;">We have some new products, you must be excited.</p>
                     </div>
                 </div>
             </div>
@@ -373,7 +285,7 @@ h1 {
                             <a href="/product/<%= PData._id %>"><img src="<%= PData.image %>" alt=""></a>
                             <!-- Product Tag -->
                             <div class="product-tag">
-                                <a href="#">NEW</a>
+                                <a href="#"><img src="resources/HomePage/newProductLogoB.svg" style="height:35px; padding-bottom:6px; width:30px;"></a>
                             </div>
                             <div class="product-whole d-flex">
                                 <a style="border-radius:50%; href="#" class="wishlist-btn"><i class="fas fa-shopping-cart"></i></a>
@@ -492,8 +404,8 @@ h1 {
                 <div class="col-12 col-lg-6">
                     <div class="subscribe-form">
                         <form action="/subscribe" method="POST">
-                            <input type="email" name="SubEmail" id="subscribeEmail" placeholder="Enter your email">
-                            <button type="submit" class="btn plantae-btn"><i class="fas fa-envelope"></i> &nbsp;  SUBSCRIBE</button>
+                            <input  style="border-radius: 25px;" type="email" name="SubEmail" id="subscribeEmail" placeholder="Enter your email">
+                            <button style="border-radius: 0px 20px 20px 0px;" type="submit" class="btn plantae-btn"><i class="fas fa-envelope"></i> &nbsp;  SUBSCRIBE</button>
                         </form> 
                     </div>
                 </div>
