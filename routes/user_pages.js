@@ -8,7 +8,8 @@ var   Subscribe  	=require("../models/userSubscribed");
 var   ContactUs    	=require("../models/contactUs.js");
 const User 			=require("../models/admin");
 const Validation 	=require("../middleware/userValidation.js");
-
+const NewsAPI = require('newsapi');
+const newsapi = new NewsAPI('489e3013d53841b789a0bea7e1fefd87');
 
 var parentNav=[];
  Page.find({}).populate("childCategory").exec((err,foundPage)=>{
@@ -24,15 +25,32 @@ var parentNav=[];
  //HOME PAGE DATA..........................
 ///>>>>>MAIN ROUTE<<<<<<<<<<
 router.get("/",function (req,res) {
-	parentNav.forEach(function(data){		
-		data.childCategory.forEach(function(newData){		
-		})
-	});	 
-	Plant.find({},(err,plantData)=>{
-
-		res.render("userArea/index",{page:parentNav,product:plantData});		
-	})
-	
+	newsapi.v2.everything({
+	  q: 'gardening',	  
+	  language: 'en',
+	  sortBy: 'Date',
+	  pageSize: 3
+	}).then(response => {
+		//This is the section which will be hitted id datat is fetched form newws api
+		if(response){		
+		  parentNav.forEach(function(data){		
+			data.childCategory.forEach(function(newData){		
+			})
+		  });	 
+		  Plant.find({},(err,plantData)=>{
+			res.render("userArea/index",{page:parentNav,product:plantData,news:response["articles"]});		
+		  })
+		  //The code below willl occur if there is some problem in fetching news  but we want to show th website
+		}else{
+			parentNav.forEach(function(data){		
+				data.childCategory.forEach(function(newData){		
+				})
+			});	 
+			Plant.find({},(err,plantData)=>{
+				res.render("userArea/index",{page:parentNav,product:plantData,news:false});		
+			})	
+		} 
+	});	
 });
 ////////////////////////////////////
 ///>>>>>ALL PRODUCTS SHOW PAGE<<<<<<<<<<

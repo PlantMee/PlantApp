@@ -1,50 +1,5 @@
 <%- include("../partials/header"); -%>
-    <style>
-
-html {
-  scroll-behavior: smooth;
-}
-h1 {
-  font-size: 50px;
-  word-break: break-all;
-}
-
-.row {
-  margin: 10px -16px;
-}
-
-/* Add padding BETWEEN each column */
-.row,
-.row > .column {
-  padding: 8px;
-}
-
-/* Create three equal columns that floats next to each other */
-.column {
-  float: left;
-  width: 33.33%;
-  display: none; /* Hide all elements by default */
-}
-
-/* Clear floats after rows */ 
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Content */
-.content {
-  background-color: white;
-  padding: 10px;
-}
-
-/* The "show" class is added to the filtered elements */
-.show {
-  display: block;
-}
-
-</style>
+    
 <nav style="padding:0;" class="navbar navbar-expand-md navbar-dark bg-dark ">
       <div class="container">         
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -228,7 +183,7 @@ h1 {
                   <!-- Single Categories Area -->
                   <div class="column col-12 col-sm-6 col-lg-3 single_Categories_item <%= data.text %> wow fadeInUp" data-wow-delay="100ms">
                       <!-- Categories Thumbnail -->
-                      <div class=" content Categories-thumbnail bg-img" style="background-image: url(/resources/HomePage/categoryCoverA.jpg);"></div>
+                      <div class=" content Categories-thumbnail bg-img" style="border-radius:6px;background-image: url(/resources/HomePage/categoryCoverA.jpg);"></div>
                       <!-- Categories Hover Text --> 
                       <div class="Categories-hover-overlay">
                           <a href="/category/<%= childItem._id %>" class="Categories-img d-flex align-items-center justify-content-center" title="Categories 1">
@@ -244,7 +199,7 @@ h1 {
                 <!-- Single Categories Area -->
                 <div class="col-12 col-lg-6 single_Categories_item home-design wow fadeInUp" data-wow-delay="300ms">
                     <!-- Categories Thumbnail -->
-                    <div class="Categories-thumbnail bg-img" style="background-image: url(/resources/HomePage/categoryCoverC.jpg);"></div>
+                    <div class="Categories-thumbnail bg-img" style="border-radius:6px;background-image: url(/resources/HomePage/categoryCoverC.jpg);"></div>
                     <!-- Categories Hover Text -->
                     <div class="Categories-hover-overlay">
                         <a href="/allProducts" class="Categories-img d-flex align-items-center justify-content-center" title="Categories 7">
@@ -315,80 +270,57 @@ h1 {
     <!-- ##### Product Area End ##### -->
 
     <!-- ##### Blog Area Start ##### -->
-    <section class="plantae-blog-area section-padding-100-0">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <!-- Section Heading -->
-                    <div class="section-heading text-center">
-                        <h2>LATEST NEWS</h2>
-                        <p>The breaking news about Gardening &amp; House plants</p>
+<!--.............BELOW IS START OF IF STATETEMENT NEWS DATA..............-->
+    <% if(news){%>
+        <section class="plantae-blog-area section-padding-100-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Section Heading -->
+                        <div class="section-heading text-center">
+                            <h2>
+                                <img src="resources/HomePage/newsLogo.svg" style="height:35px; padding-bottom:6px; width:30px;">
+                                GARDEN POST
+                            </h2>
+                            <p>The breaking news about Gardening &amp; House plants</p>
+                        </div>
                     </div>
+                </div>
+
+                <div class="row justify-content-center">
+                    <% news.forEach(function(newsData) { %>
+                        <!-- Single News Area coming from news api -->
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="single-blog-post mb-100">
+                                <div class="post-thumbnail mb-30">
+                                   <img src="<%= newsData.urlToImage %>" alt="">
+                                </div>
+                                <div class="post-content">
+                                <!--THIS IS WHERE TITLE OF THE POST is available -->
+                                    <a  class="post-title">
+                                        <h5><%= newsData.title %></h5>
+                                    </a>
+                                    <div class="post-meta">
+                                        <a class="disable"><i class="far fa-calendar-alt">
+                                            </i> &nbsp; <% var date = newsData.publishedAt; var dateCorrect= date.slice(0,10); %><%= dateCorrect %>
+                                        </a>
+                                        <a class="disablae"><i class="fas fa-user-tag">
+                                            </i> &nbsp;<%= newsData.author %>
+                                        </a>
+                                    </div>
+                                    <p class="post-excerpt">
+                                        <%= newsData.content %>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    <% }) %>
+                    <!--EACH NEWS AREA POST ENDS HERE-->
                 </div>
             </div>
-
-            <div class="row justify-content-center">
-
-                <!-- Single Blog Post Area -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="single-blog-post mb-100">
-                        <div class="post-thumbnail mb-30">
-                            <a href="single-post.html"><img src="img/bg-img/6.jpg" alt=""></a>
-                        </div>
-                        <div class="post-content">
-                            <a href="single-post.html" class="post-title">
-                                <h5>Garden designers across the country forecast ideas shaping the gardening world in 2018</h5>
-                            </a>
-                            <div class="post-meta">
-                                <a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i> 20 Jun 2018</a>
-                                <a href="#"><i class="fa fa-user" aria-hidden="true"></i> Alan Jackson</a>
-                            </div>
-                            <p class="post-excerpt">Integer luctus diam ac scerisque consectetur. Vimus ottawas nec lacus sit amet. Aenean interdus mid vitae.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Blog Post Area -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="single-blog-post mb-100">
-                        <div class="post-thumbnail mb-30">
-                            <a href="single-post.html"><img src="img/bg-img/7.jpg" alt=""></a>
-                        </div>
-                        <div class="post-content">
-                            <a href="single-post.html" class="post-title">
-                                <h5>2018 Midwest Tree and Shrub Conference: Resilient Plants for a Lasting Landscape</h5>
-                            </a>
-                            <div class="post-meta">
-                                <a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i> 20 Jun 2018</a>
-                                <a href="#"><i class="fa fa-user" aria-hidden="true"></i> Christina Aguilera</a>
-                            </div>
-                            <p class="post-excerpt">Integer luctus diam ac scerisque consectetur. Vimus ottawas nec lacus sit amet. Aenean interdus mid vitae.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Blog Post Area -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="single-blog-post mb-100">
-                        <div class="post-thumbnail mb-30">
-                            <a href="single-post.html"><img src="img/bg-img/8.jpg" alt=""></a>
-                        </div>
-                        <div class="post-content">
-                            <a href="single-post.html" class="post-title">
-                                <h5>The summer coming up, it’s time for both us and the flowers to soak up the sunshine</h5>
-                            </a>
-                            <div class="post-meta">
-                                <a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i> 19 Jun 2018</a>
-                                <a href="#"><i class="fa fa-user" aria-hidden="true"></i> Mason Jenkins</a>
-                            </div>
-                            <p class="post-excerpt">Integer luctus diam ac scerisque consectetur. Vimus ottawas nec lacus sit amet. Aenean interdus mid vitae.</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
+        </section>
+     <% } %>   
+<!--.............ABOVE IS END OF IF STATETEMENT SO THAT ABOVE PORTION IS DISPLAYED ONLY IF THERE IS SOME NEWS DATA..............-->
     <!-- ##### Blog Area End ##### -->
 
     <!-- ##### Subscribe Area Start ##### -->
