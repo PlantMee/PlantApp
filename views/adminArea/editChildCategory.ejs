@@ -1,0 +1,443 @@
+<%- include("../partials/adminHeader"); -%>
+<style>
+body {
+  background-image: url('/resources/AdminPage/ChildCategoryBack.jpg');
+}
+	a {
+		color: #2ca8ff
+	}
+	a:focus,
+	a:hover {
+		color: #109cff
+	}
+	a:active,
+	a:focus,
+	button::-moz-focus-inner,
+	input[type=button]::-moz-focus-inner,
+	input[type=button]:focus,
+	input[type=file]>input[type=button]::-moz-focus-inner,
+	input[type=reset]::-moz-focus-inner,
+	input[type=submit]::-moz-focus-inner,
+	select::-moz-focus-inner {
+		outline: 0!important
+	}
+	.btn:active,
+	.btn:focus,
+	.btn:hover {
+		outline: 0
+	}
+	.form-control {
+		-webkit-transition: all .3s linear;
+		-moz-transition: all .3s linear;
+		-o-transition: all .3s linear;
+		-ms-transition: all .3s linear;
+		transition: all .3s linear
+	}
+	.image-container {
+		min-height: 100vh;
+		background-position: center center;
+		background-size: cover
+	}
+	.wizard-container {
+		padding-top: 100px;
+		z-index: 3
+	}
+	.wizard-navigation {
+		position: relative
+	}
+	.h1,
+	.h2,
+	.h3,
+	.h4,
+	.h5,
+	.h6,
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		-moz-osx-font-smoothing: grayscale;
+		-webkit-font-smoothing: antialiased
+	}
+	.h1,
+	.h2,
+	.h3,
+	.h4,
+	h1,
+	h2,
+	h3,
+	h4 {
+		font-weight: 400;
+		margin: 30px 0 15px
+	}
+	.h1,
+	h1 {
+		font-size: 52px
+	}
+	.h2,
+	h2 {
+		font-size: 36px
+	}
+	.h3,
+	h3 {
+		font-size: 28px;
+		margin: 20px 0 10px
+	}
+	.h4,
+	h4 {
+		font-size: 22px
+	}
+	.h5,
+	h5 {
+		font-size: 16px
+	}
+	.h6,
+	h6 {
+		font-size: 14px;
+		font-weight: 700;
+		text-transform: uppercase
+	}
+	.card {
+		background-color: #fff;
+		padding: 10px 0 20px;
+		width: 100%
+	}
+	.wizard-card {
+		min-height: 410px;
+		background-color: #fff;
+		box-shadow: 0 0 15px rgba(0, 0, 0, .15), 0 0 1px 1px rgba(0, 0, 0, .1);
+		border-radius: 10px;
+		padding: 10px 0
+	}
+	.wizard-card .picture-container {
+		position: relative;
+		cursor: pointer;
+		text-align: center
+	}
+	.wizard-card .picture {
+		width: 106px;
+		height: 106px;
+		background-color: #999;
+		border: 4px solid #ccc;
+		color: #fff;
+		border-radius: 50%;
+		margin: 5px auto;
+		overflow: hidden;
+		transition: all .2s;
+		-webkit-transition: all .2s
+	}
+	.wizard-card .picture:hover {
+		border-color: #2ca8ff
+	}
+	.wizard-card .picture input[type=file] {
+		cursor: pointer;
+		display: block;
+		height: 100%;
+		left: 0;
+		opacity: 0!important;
+		position: absolute;
+		top: 0;
+		width: 100%
+	}
+	.wizard-card .picture-src {
+		width: 100%
+	}
+	.wizard-card .tab-content {
+		min-height: 340px;
+		padding: 20px 10px
+	}
+	.wizard-card .wizard-footer {
+		padding: 0 10px
+	}
+	.wizard-card .wizard-header h3 {
+		font-weight: 200;
+		text-align: center
+	}
+	.wizard-card[data-color=green] .picture:hover {
+		border-color: #05ae0e
+	}
+	.wizard-card[data-color=azzure] .picture:hover {
+		border-color: #2ca8ff
+	}
+	.wizard-card[data-color=blue] .picture:hover {
+		border-color: #3472f7
+	}
+	.wizard-card[data-color=orange] .picture:hover {
+		border-color: #ff9500
+	}
+	.wizard-card[data-color=red] .picture:hover {
+		border-color: #ff3b30
+	}
+	.wizard-card .btn {
+		text-transform: uppercase
+	}
+	.wizard-card .btn-finish {
+		display: none
+	}
+	.form-control {
+		background-color: #fff;
+		border: 1px solid #e3e3e3;
+		border-radius: 4px;
+		box-shadow: none;
+		color: #444;
+		height: 38px;
+		padding: 6px 16px
+	}
+	.form-control:focus {
+		background-color: #fff;
+		border: 1px solid #9a9a9a;
+		box-shadow: none;
+		outline: 0 none
+	}
+	.form-control::-moz-placeholder {
+		color: #ddd;
+		opacity: 1
+	}
+	.form-control::-moz-placeholder {
+		color: #ddd;
+		opacity: 1
+	}
+	.form-control::-webkit-input-placeholder {
+		color: #ddd;
+		opacity: 1
+	}
+	.form-control::-ms-input-placeholder {
+		color: #ddd;
+		opacity: 1
+	}
+	.form-control[disabled],
+	.form-control[readonly] {
+		background-color: #eee;
+		color: #999;
+		cursor: not-allowed
+	}
+	.input-group .form-control:first-child,
+	.input-group-btn:first-child>.btn {
+		border-right: 0 none
+	}
+	.input-group .form-control:last-child,
+	.input-group-btn:first-child>.btn:not(:first-child),
+	.input-group-btn:last-child>.btn {
+		border-left: 0 none
+	}
+	.btn {
+		border-width: 2px;
+		background-color: transparent;
+		font-weight: 400;
+		opacity: .8;
+		padding: 8px 16px
+	}
+	.btn:active {
+		background-image: none;
+		box-shadow: none
+	}
+	.btn[disabled] {
+		opacity: .45
+	}
+	.btn-sm {
+		border-radius: 3px;
+		font-size: 12px;
+		padding: 5px 10px
+	}
+	.btn-wd {
+		min-width: 100px
+	}
+	.btn-default {
+		color: #777;
+		border-color: #999
+	}
+	.btn-warning {
+		color: #ff9500;
+		border-color: #ff9500
+	}
+	.btn:hover {
+		background-color: transparent;
+		opacity: 1
+	}
+	.btn-warning:active,
+	.btn-warning:focus,
+	.btn-warning:hover {
+		color: #ed8d00;
+		border-color: #ed8d00;
+		background-color: transparent
+	}
+	.btn-default:focus,
+	.btn-default:hover {
+		color: #666;
+		border-color: #888;
+		background-color: transparent
+	}
+	.btn-warning[disabled],
+	.btn-warning[disabled]:active,
+	.btn-warning[disabled]:focus,
+	.btn-warning[disabled]:hover {
+		background-color: transparent;
+		border-color: #ff9500
+	}
+	.btn-fill {
+		color: #fff;
+		opacity: 1
+	}
+	.btn-fill:active,
+	.btn-fill:focus,
+	.btn-fill:hover {
+		color: #fff
+	}
+	.btn-fill.btn-default {
+		background-color: #999;
+		border-color: #999
+	}
+	.btn-fill.btn-default:active,
+	.btn-fill.btn-default:focus,
+	.btn-fill.btn-default:hover {
+		background-color: #888;
+		border-color: #888
+	}
+	.btn-fill.btn-warning {
+		background-color: #ff9500;
+		border-color: #ff9500
+	}
+	.btn-fill.btn-warning:active,
+	.btn-fill.btn-warning:focus,
+	.btn-fill.btn-warning:hover {
+		background-color: #ed8d00;
+		border-color: #ed8d00
+	}
+	.text-warning,
+	.text-warning:hover {
+		color: #ff9500
+	}
+	.label {
+		padding: .2em .6em .2em;
+		border: 1px solid #999;
+		border-radius: 3px;
+		color: #999;
+		background-color: #fff;
+		font-weight: 500;
+		font-size: 11px;
+		text-transform: uppercase
+	}
+	.label.label-fill {
+		color: #fff
+	}
+	.label-warning {
+		border-color: #ff9500;
+		color: #ff9500
+	}
+	label {
+		font-weight: 400
+	}
+	.label-warning.label-fill {
+		background-color: #ff9500
+	}
+	.label-default.label-fill {
+		background-color: #999
+	}
+	.footer {
+		position: relative;
+		bottom: 20px;
+		right: 0;
+		width: 100%;
+		color: #fff;
+		z-index: 4;
+		text-align: center;
+		margin-top: 60px;
+		text-shadow: 0 0 1px #000
+	}
+	.footer a {
+		color: #fff
+	}
+	@media (min-width: 768px) {
+		.btn-wd {
+			min-width: 140px
+		}
+	}
+</style>
+<div class="image-container set-full-height" >
+
+
+    <!--   Big container   -->
+    <div class="container">
+        <div class="row">
+        <div style="margin:auto;" class="col-sm-8 col-sm-offset-2">
+
+            <!--      Wizard container        -->
+            <div class="wizard-container">
+
+                <div class="card wizard-card" data-color="orange" id="wizardProfile">
+                    <form action="/admin/childNav/<%= childCategory._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+                <!--        You can switch ' data-color="orange" '  with one of the next bright colors: "blue", "green", "orange", "red"          -->
+
+                    	<div class="wizard-header">
+                        	<h3>
+                        	   <b>Add  child category</b> <br>
+                            </h3>                        	   
+                    	</div>
+
+						<div class="wizard-navigation">
+							<ul>
+	                            <li><a href="#about" data-toggle="tab"></a></li>                           
+	                        </ul>
+						</div>
+
+                        <div class="tab-content">
+                            <div class="tab-pane" id="about">
+                              <div class="row">                                 
+                                  <div class="col-sm-4 col-sm-offset-1">
+                                     <div class="picture-container">
+                                          <div class="picture">
+                                              <img src="/resources/AdminPage/logoAddChild.svg" class="picture-src" id="wizardPicturePreview" accept="image/*" >
+                                              <input name="pageImage" type="file" id="wizard-picture">
+                                          </div>
+                                          <h6>Choose Picture</h6>
+                                      </div>                                      
+                                  </div>
+                                  <div class="col-sm-6">
+                                      
+                                       <div class="form-group">
+                                        <label>Category Title </label>
+                                        <input value="<%= childCategory.title %>" name="title" type="text" class="form-control" placeholder="Andrew...">
+                                      </div>
+                                      <div class="form-group">
+							            <label for="category">Parent category</label>
+							            <small>**Right now it cannot be changed</small>
+							            <select disabled id="category" name="category" class="form-control">
+							           
+							            <!--================================================================-->
+							            <!-- category from database and make it select-->
+							              <% parentNav.forEach(function(category){ %>                 
+							                <option value="<%= category._id %>"> 
+							                    <%= category.text %> 
+							                </option>
+							              <% }) %>
+							            <!--================================================================-->          
+							            </select>
+							            <small id="emailHelp" class="form-text text-muted">**Right now it cannot be modified</small>
+							          </div>                                      
+                                  </div>                                  
+                              </div>
+                            </div>
+                            <br><br><br><br><br><br>
+                        <div class="wizard-footer height-wizard">
+                            <div class="pull-right">    
+                          	    <div style="margin:auto; margin-top:2%;" class="form-group">
+						          <button  type="submit" class="btn btn btn-finish btn-fill btn-warning btn-wd btn-sm">SUBMIT</button>
+						        </div>                                                          
+                            </div>                            
+                        </div>
+                    </form>
+                </div>
+            </div> <!-- wizard container -->
+        </div>
+        </div><!-- end row -->
+    </div> <!--  big container -->
+</div>
+
+
+<script>
+	//SELECXTED CATEGORY FOR EDIT
+	$('select[name^="category"] option[value="<%= childCategory.parentTag._id %>"]').attr("selected","selected");
+</script>
+
+<%- include("../partials/adminFooter"); -%>

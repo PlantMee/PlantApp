@@ -9,12 +9,11 @@ const childCategorySchema=mongoose.Schema({
 	sorting:Number,
 	pageLink:{
 		type:String,
-
 	},
-	image:{
+	pageImage:{
 		type:String
-	},
-	iconImage:{
+	},	
+	imageId:{
 		type:String
 	},
 	parentTag:{

@@ -10,34 +10,34 @@ $(document).ready(function(){
 
     // Code for the Validator
     var $validator = $('.wizard-card form').validate({
-      rules: {
-        firstname: {
-          required: true,
-          minlength: 3
-        },
-        lastname: {
-          required: true,
-          minlength: 3
-        },
-        email: {
-          required: true,
-          minlength: 3,
+		  rules: {
+		    firstname: {
+		      required: true,
+		      minlength: 3
+		    },
+		    lastname: {
+		      required: true,
+		      minlength: 3
+		    },
+		    email: {
+		      required: true,
+		      minlength: 3,
+		    }
         }
-        }
-  });
+	});
 
     // Wizard Initialization
-    $('.wizard-card').bootstrapWizard({
+  	$('.wizard-card').bootstrapWizard({
         'tabClass': 'nav nav-pills',
         'nextSelector': '.btn-next',
         'previousSelector': '.btn-previous',
 
         onNext: function(tab, navigation, index) {
-          var $valid = $('.wizard-card form').valid();
-          if(!$valid) {
-            $validator.focusInvalid();
-            return false;
-          }
+        	var $valid = $('.wizard-card form').valid();
+        	if(!$valid) {
+        		$validator.focusInvalid();
+        		return false;
+        	}
         },
 
         onInit : function(tab, navigation, index){
@@ -110,7 +110,7 @@ $(document).ready(function(){
 
             refreshAnimation($wizard, index);
         }
-    });
+  	});
 
 
     // Prepare the preview for profile picture
@@ -182,14 +182,14 @@ function refreshAnimation($wizard, index){
 }
 
 function debounce(func, wait, immediate) {
-  var timeout;
-  return function() {
-    var context = this, args = arguments;
-    clearTimeout(timeout);
-    timeout = setTimeout(function() {
-      timeout = null;
-      if (!immediate) func.apply(context, args);
-    }, wait);
-    if (immediate && !timeout) func.apply(context, args);
-  };
+	var timeout;
+	return function() {
+		var context = this, args = arguments;
+		clearTimeout(timeout);
+		timeout = setTimeout(function() {
+			timeout = null;
+			if (!immediate) func.apply(context, args);
+		}, wait);
+		if (immediate && !timeout) func.apply(context, args);
+	};
 };

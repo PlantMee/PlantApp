@@ -177,23 +177,29 @@
                 </div>
             </div>
 
-            <div class="row plantae-Categories">         
+            <div class="row plantae-Categories">                     
               <% page.forEach(function(data){ %>
-                <% data.childCategory.slice(0,6).forEach(function(childItem){ %>
+              <!--Below is tge variable to store count so that logo appears next to ITEMS -->
+                <% var count=0; %>
+                <% data.childCategory.slice(0,6).forEach(function(childItem){ %>                   
                   <!-- Single Categories Area -->
                   <div class="column col-12 col-sm-6 col-lg-3 single_Categories_item <%= data.text %> wow fadeInUp" data-wow-delay="100ms">
                       <!-- Categories Thumbnail -->
-                      <div class=" content Categories-thumbnail bg-img" style="border-radius:6px;background-image: url(/resources/HomePage/categoryCoverA.jpg);"></div>
+                      <div class=" content Categories-thumbnail bg-img" style="border-radius:6px;background-image: url(<%= childItem.pageImage %>);">
+                                                                        <!--FOR SELECTING IMAGE-->                                                        
+                                                                            
+                      </div>
                       <!-- Categories Hover Text --> 
                       <div class="Categories-hover-overlay">
                           <a href="/category/<%= childItem._id %>" class="Categories-img d-flex align-items-center justify-content-center" title="Categories 1">
                               <div class="port-hover-text">
                                   <h3><%= childItem.title %></h3>
-                                  <h5><img style="width:50px; height:auto;" src="/resources/HomePage/viewCategoryLogo.svg"></h5>
+                                  <h5><img style="width:50px; height:auto;" src="<%= plantLogo[count] %>"></h5>
                               </div>
                           </a>
                       </div>
                   </div>
+                  <% count +=1 ;%>
                 <%})%>  
               <% } )%>  
                 <!-- Single Categories Area -->
@@ -339,7 +345,7 @@
                     <div class="subscribe-form">
                         <form action="/subscribe" method="POST">
                             <input  style="border-radius: 25px;" type="email" name="SubEmail" id="subscribeEmail" placeholder="Enter your email">
-                            <button style="border-radius: 0px 20px 20px 0px;" type="submit" class="btn plantae-btn"><i class="fas fa-envelope"></i> &nbsp;  SUBSCRIBE</button>
+                            <button style="border-radius: 0px 20px 20px 0px;" type="submit" class="btn second-btn"><i class="fas fa-envelope"></i> &nbsp;  SUBSCRIBE</button>
                         </form> 
                     </div>
                 </div>

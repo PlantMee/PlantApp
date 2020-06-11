@@ -24,33 +24,42 @@ var parentNav=[];
 
  //HOME PAGE DATA..........................
 ///>>>>>MAIN ROUTE<<<<<<<<<<
-router.get("/",function (req,res) {
+router.get("/",function (req,res) {	
+	var plantLogo=["/resources/HomePage/viewCategoryLogoA.svg","/resources/HomePage/viewCategoryLogoB.svg","/resources/HomePage/viewCategoryLogoC.svg",
+					"/resources/HomePage/viewCategoryLogoD.svg","/resources/HomePage/viewCategoryLogoE.svg","/resources/HomePage/viewCategoryLogoF.svg"];
 	newsapi.v2.everything({
-	  q: 'gardening',	  
+	  q: 'plant tips ',	  
 	  language: 'en',
 	  sortBy: 'Date',
 	  pageSize: 3
 	}).then(response => {
 		//This is the section which will be hitted id datat is fetched form newws api
 		if(response){		
-		  parentNav.forEach(function(data){		
-			data.childCategory.forEach(function(newData){		
-			})
-		  });	 
-		  Plant.find({},(err,plantData)=>{
-			res.render("userArea/index",{page:parentNav,product:plantData,news:response["articles"]});		
-		  })
-		  //The code below willl occur if there is some problem in fetching news  but we want to show th website
+		  Page.find({}).populate("childCategory").exec((err,foundPage)=>{
+			 	if(err){
+			 		req.flash("error","SOMETHING WENT WRONG PLEASE RETRY AFTER SOMETIME");
+					res.redirect("back")
+			 	}else{			 		
+			 		Plant.find({},(err,plantData)=>{
+						res.render("userArea/index",{plantLogo:plantLogo,page:foundPage,product:plantData,news:response["articles"]});		
+					})		 		
+			 	}			 	
+			}); 
+		    
+		  //The code below will occur if there is some problem in fetching news  but we want to show th website
 		}else{
-			parentNav.forEach(function(data){		
-				data.childCategory.forEach(function(newData){		
-				})
-			});	 
-			Plant.find({},(err,plantData)=>{
-				res.render("userArea/index",{page:parentNav,product:plantData,news:false});		
-			})	
-		} 
-	});	
+			 Page.find({}).populate("childCategory").exec((err,foundPage)=>{
+			 	if(err){
+			 		req.flash("error","SOMETHING WENT WRONG PLEASE RETRY AFTER SOMETIME");
+					res.redirect("back")
+			 	}else{			 		
+			 		Plant.find({},(err,plantData)=>{
+						res.render("userArea/index",{page:foundPage,product:plantData,news:false});		
+					})		 		
+			 	}		
+			});				
+			} 
+		});	
 });
 ////////////////////////////////////
 ///>>>>>ALL PRODUCTS SHOW PAGE<<<<<<<<<<

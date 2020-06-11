@@ -5,6 +5,16 @@ const Page 			= require("../models/page");
 const ChildCategory =require("../models/childCategory");
 const Validation 	=require("../middleware/adminValidation.js");
 var Admin 	 		=require("../models/admin");
+const Middleware	=require("../middleware/index");
+
+
+var cloudinary = require('cloudinary');
+cloudinary.config({ 
+  cloud_name: 'deepjha98',
+  api_key:"696316222696763"||process.env.CLOUDINARY_API_KEY, 
+  api_secret:"2EZYqtpnBHlz80XeBCdxJnVPIjE"||process.env.CLOUDINARY_API_SECRET
+});
+///////////////////////////////
 
 //SETTING APP VARIABLE
 router.get("/",Validation.isLoggedIn,function (req,res) {
@@ -121,10 +131,9 @@ router.get("/childNav/new",Validation.isLoggedIn,(req,res)=>{
 	 	}else{
 	 		res.render("adminArea/addChildNav",{parentNav:parentNav}); 		
 	 	}	 	
-	});
- ///////////////////////////////	
+	}); 
 });
-
+///////////////////////////////	
 router.post("/childNav",Validation.isLoggedIn,(req,res)=>{
  ChildCategory.findOne({title:req.body.title},(err,foundItem)=>{
  	if(foundItem){
@@ -155,12 +164,59 @@ router.post("/childNav",Validation.isLoggedIn,(req,res)=>{
 
 				}
 	})
-
 		}
 	})
  	}
  })	
 });
+//================================================================================
+////route to edit child categories data
+//Route to edit page
+router.get("/childNav/:id/edit",Validation.isLoggedIn,(req,res)=>{
+	ChildCategory.findById(req.params.id).populate("parentTag").exec((err,foundData)=>{
+		if (err) {
+			req.flash("error",err);
+			res.redirect("back");
+		}else{
+				//+++++++NAVBAR ELEMENTS++++++++++
+	 	    Page.find({},(err,parentNav)=>{
+			 	if(err){
+			 		console.log(err);
+			 	}else{
+					 		//renderShow Edit Page along with the data
+					res.render("adminArea/editChildCategory",{childCategory:foundData,parentNav:parentNav});				 		
+			 	}	 	
+			});				
+		}
+	})
+});
+///////////////////////////////////////
+//ROute to tackle edit categoty request
+ router.put("/childNav/:id",Validation.isLoggedIn,Middleware.upload.single('pageImage'),(req,res)=>{ 	 	 
+	  ChildCategory.findById(req.params.id, async function(err, child){
+        if(err){
+            req.flash("error", err.message);
+            res.redirect("back");
+        } else {
+            if (req.file) {
+              try {                  
+                  var result = await cloudinary.v2.uploader.upload(req.file.path);
+                  child.imageId = result.public_id;
+                  child.pageImage = result.secure_url;
+              } catch(err) {
+                  req.flash("error", err.message);
+                  return res.redirect("back");
+              }
+            }   
+            child.title=req.body.title;
+            child.parentTag=req.body.category;
 
+            child.save();
+            req.flash("success","Successfully Updated!");
+            res.redirect("/admin/plant");
+        }
+    });
+ })
+ //================================================================================
 //EXPORTING ADMIN DATA
 module.exports=router;
