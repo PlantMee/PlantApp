@@ -33,6 +33,9 @@ var AdminSchema = new mongoose.Schema({
 	profilePic:{
 		type:String
 	},
+	imageId:{
+		type:String
+	},
 	secret:{
 		type:String,		
 	},
