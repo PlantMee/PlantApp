@@ -27,55 +27,96 @@
     <link rel="stylesheet" href="/stylesheets/user/index.css">
     <title>PlantAe</title>
 
+
+
   </head>
 
   <body style="padding: 0px;">
-<nav style="padding-bottom: 2px;padding-top: 2px;" class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-      <a class="navbar-brand" href="/"><img style="height:60px;" src="/resources/PlantaeCBack.png" alt ="PlantAe"><span>Plantae</span></a>
-     
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <header>          
+      <!-- / contact content -->
+      <div class="plantHead">
+        <!-- logo -->
+        <strong class="logo"><i class="fas fa-heart"></i></strong>
+        <!-- open nav mobile -->
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-        
-        </ul>
+        <!--search -->
+        <label class="open-search" for="open-search">
+          <i class="fas fa-search"></i>
+                <input class="input-open-search" id="open-search" type="checkbox" name="menu" />
+        <div class="search">
+          <button class="button-search"><i class="fas fa-search"></i></button>
+          <input type="text" placeholder="What are you looking for?" class="input-search"/>
+        </div>
+        </label>
+        <!-- // search -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light nav-content">
+          <!-- nav -->
+          <ul class="nav-content-list">
+            <li class="nav-content-item account-login">
+              <label class="open-menu-login-account" for="open-menu-login-account">
 
-        <form class="form-inline my-2 my-lg-0 ml-auto">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-        <ul class="nav justify-content-end">
-          <% if(!currentUser){ %>  
-            <li class="nav-item">
-                <a class=" btn btn-default nav-link active" href="/login">
-                <i class="fas fa-shopping-cart"></i>0</a>
-              </li>
-              <li class="nav-item">
-                <a class="  btn btn-light nav-link" href="/login">
-                    Login&nbsp;<i class="fas fa-sign-in-alt"></i>
-                </a>
-              </li>
-          <% }else{ %>
-              <li class="nav-item">
-                <a class=" btn btn-default nav-link active" href="/cart">
-                <i class="fas fa-shopping-cart"></i><%= currentUser.cart.length %>  </a>
-              </li>
-              <li class="nav-item">
-               <a class="nav-link d-block" href="<%= currentUser._id %>/profile">
-                  <i class="fas fa-user-circle"></i> Profile
-               </a>
-              </li>               
-              <li class="nav-item">
-                <a class="  btn btn-light nav-link" href="/logout">
-                    Logout&nbsp;<i class="fas fa-sign-out-alt"></i></i>
-                </a>
-              </li>
-          <%}%>    
-        </ul>
+                <input class="input-menu" id="open-menu-login-account" type="checkbox" name="menu" />
+
+                <i class="fas fa-user-circle"></i><span class="login-text">Hello, Sign in <strong>Create Account</strong></span> <span class="item-arrow"></span>
+
+                <!-- submenu -->
+                <ul class="login-list">
+                  <li class="login-list-item"><a href="">My account</a></li>
+                  <li class="login-list-item"><a href="">Create account</a></li>
+                  <li class="login-list-item"><a href="">logout</a></li>
+                  </label>
+                </ul>
+            </li>
+            <li class="nav-content-item"><a class="nav-content-link" href=""><i class="fas fa-heart"></i></a></li>
+            <li class="nav-content-item"><a class="nav-content-link" href=""><i class="fas fa-shopping-cart"></i></a></li>
+            <!-- call to action -->
+          </ul>
+        </nav>
       </div>
-  </div>
-</nav>
-  
+      <!-- nav navigation commerce -->
+      <div class="nav-plantHead">
+        <nav class=" navbar navbar-expand-lg navbar-light bg-light all-category-nav">
+          <label class="open-menu-all" for="open-menu-all">
+            <input class="input-menu-all" id="open-menu-all" type="checkbox" name="menu-open" />
+            <span class="all-navigator"><i class="fas fa-bars"></i> <span>All category</span> <i class="fas fa-angle-down"></i>
+              <i class="fas fa-angle-up"></i>
+            </span>
+
+            <ul class="all-category-list">
+              <li class="all-category-list-item"><a href="" class="all-category-list-link">Smartphones<i class="fas fa-angle-right"></i></a>
+                <div class="category-second-list">
+                  <ul class="category-second-list-ul">
+                    <li class="category-second-item"><a href="">Iphone 10</a></li>
+                    <li class="category-second-item"><a href="">Galaxy Note 10</a></li>
+                    <li class="category-second-item"><a href="">Motorola One </a></li>
+                    <li class="category-second-item"><a href="">Galaxy A80 </a></li>
+                    <li class="category-second-item"><a href="">Galaxy M </a></li>
+                    <li class="category-second-item"><a href="">Huaway P30 </a></li>
+                  </ul>
+
+                  <div class="img-product-menu"><img src="https://i.ibb.co/Vvndkmy/banner.jpg"></div>
+                  </div>
+              </li>
+              <li class="all-category-list-item"><a href="" class="all-category-list-link">Furniture <i class="fas fa-angle-right"></i></a></li>
+              <li class="all-category-list-item"><a href="" class="all-category-list-link">Toys<i class="fas fa-angle-right"></i></a></li>
+              <li class="all-category-list-item"><a href="" class="all-category-list-link">Computing<i class="fas fa-angle-right"></i></a></li>
+              <li class="all-category-list-item"><a href="" class="all-category-list-link">Games<i class="fas fa-angle-right"></i></a></li>
+              <li class="all-category-list-item"><a href="" class="all-category-list-link">Automotive<i class="fas fa-angle-right"></i></a></li>
+
+            </ul>
+          </label>
+
+        </nav>
+        <nav class="featured-category">
+          <ul class="nav-row">
+            <li class="nav-row-list"><a href="#" class="nav-row-list-link">Smartphones</a></li>
+            <li class="nav-row-list"><a href="#" class="nav-row-list-link">furniture</a></li>
+            <li class="nav-row-list"><a href="#" class="nav-row-list-link">Toys</a></li>
+            <li class="nav-row-list"><a href="#" class="nav-row-list-link">Computing</a></li>
+            <li class="nav-row-list"><a href="#" class="nav-row-list-link">Games</a></li>
+            <li class="nav-row-list"><a href="#" class="nav-row-list-link">Automotive</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- ##### Header Area End ##### -->

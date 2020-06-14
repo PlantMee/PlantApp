@@ -19,6 +19,7 @@ const express 		=require("express"),
 	  	  adminProductRoutes=require("./routes/adminProductRoutes"),
 	  	  userProfile		=require("./routes/userProfile"),
 	  	  Admin 		    =require("./models/admin");
+	const Page 				=require("./models/page");
 	   
 //SETTING APP VARIABLE
 const app=express();
@@ -66,10 +67,14 @@ app.use(passport.session());
 passport.use(new LocalStrategy(Admin.authenticate())); 
 passport.serializeUser(Admin.serializeUser());
 passport.deserializeUser(Admin.deserializeUser());
+
+//USer data is stored in this part 
 app.use(function (req,res,next){
 		res.locals.currentUser = req.user;
 		next();
 	})
+
+
 
 //>>>>>>>>ROUTES<<<<<<<<<<//
 app.use(UserPages);
