@@ -2,6 +2,7 @@ const express = require("express"),
 	  router=express.Router(),
 	  passport = require("passport");
 const Page =require("../models/page");
+var   ChildCategory=("../models/childCategory");
 var   userCategory=("../models/userCategory");
 var   Plant 		=require("../models/plantModel");
 const User 			=require("../models/admin");
@@ -20,14 +21,21 @@ cloudinary.config({
 
 //=====USER PROFILE ROUTE======
 router.get("/:id/profile",Validation.isLoggedIn,(req,res)=>{ 	
- 	User.findOne(req.user._id,(err,foundUser)=>{
-		if(err){
-			req.flash("error",err.message);
-			return res.redirect("back");
-		}else{		
-			res.render("userArea/userProfile",{states:states,user:foundUser,cart:foundUser.cart});
-		}
-	})
+ 	Page.find({}).populate("childCategory").exec((err,foundPage)=>{
+	 	if(err){
+	 		req.flash("error","SOMETHING WENT WRONG PLEASE RETRY AFTER SOMETIME");
+			res.redirect("back")
+	 	}else{	
+		 	User.findOne(req.user._id,(err,foundUser)=>{
+				if(err){
+					req.flash("error",err.message);
+					return res.redirect("back");
+				}else{		
+					res.render("userArea/userProfile",{page:foundPage,states:states,user:foundUser,cart:foundUser.cart});
+				}
+			})	 		 				 		
+	 	}		
+	});	 	
 });
 ///////////////////////////////
 //personal info edit page

@@ -1,6 +1,11 @@
 <%- include("../partials/header"); -%>
+<<<<<<< HEAD
         
 	 
+=======
+<!-- ***** Top Header Area ***** -->
+
+>>>>>>> tmp
     <!-- ##### Hero Area Start ##### -->
   <section class="hero-area">
         <div class="container">
@@ -19,7 +24,7 @@
             <!-- Single Hero Post -->
             <div class="single-hero-post bg-overlay">
                 <!-- Post Image -->
-                <div class="slide-img bg-img" style="background-image: url(/resources/HomePage/coverA.jpg);"></div>
+                <div class="slide-img bg-img d-block w-100" style="background-image: url(/resources/HomePage/coverE.jpg);"></div>
                 <div class="container h-100">
                     <div class="row h-100 align-items-center">
                         <div class="col-12">
@@ -38,7 +43,22 @@
                 </div>
             </div>
         </div>
+        <!--TO SHOW ALL THE ALERTS RELATED INFO-->  
+      <div>  <main role="main" class="container" style="margin-top: 1%;">
+               <div class="container">
+                 <% if(error && error.length > 0) { %>
+                   <div class="alert alert-danger" role="alert"><%=error %></div>
+                 <% } %>
+                 <% if(success && success.length > 0) { %>
+                   <div class="alert alert-success" role="alert"><%= success %></div>
+                 <% } %>
+                 <% if(info && info.length > 0) { %>
+                   <div class="alert alert-info" role="alert"><%= info %></div>
+                  <% } %>
+                </div> 
+        </main></div>
     </section>
+      
     <!-- ##### Main Area End ##### -->
 
     <!-- ##### Service Area Start ##### -->
@@ -331,10 +351,7 @@
             </div>
         </div>
 
-        <!-- Subscribe Side Thumbnail -->
-        <div class="subscribe-side-thumb wow fadeInUp" data-wow-delay="500ms">
-            <img class="first-img" src="img/core-img/leaf.png" alt="">
-        </div>
+      
     </section>
     <!-- ##### Subscribe Area End ##### -->
 
@@ -437,10 +454,8 @@ for (var i = 0; i < btns.length; i++) {
 </script>
 
   <!-- All Plugins js -->
-    <script src="js/plugins/plugins.js"></script> 
-<script>
-
-    autoPlay();
+ <script>
+   autoPlay();
 
   //FUNCTION TO GET AND AUTO PLAY YOUTUBE VIDEO FROM DATATAG
   function autoPlay() {
@@ -455,7 +470,7 @@ for (var i = 0; i < btns.length; i++) {
           });
       });
   }
-
- 
 </script>
+
+
 <%- include("../partials/footer"); -%>

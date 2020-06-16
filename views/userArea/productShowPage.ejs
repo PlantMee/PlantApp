@@ -10,17 +10,7 @@ html{
                 0px 8px 13px rgba(0,0,0,0.1),
                 0px 18px 23px rgba(0,0,0,0.1);
 }
-h1,h3{
-    color: #27373b;
-    font-family: 'Raleway',sans-serif !important;
-}
-h1{
-    font-weight: 700;
-    font-size:5em; 
-}
-h3{
-    text-align: center;
-}
+
 #learn{
     border-radius: 25px;
 }
@@ -73,14 +63,6 @@ hr{
     margin: 2.5px 0px;
 }
 
-.navbar-nav .nav-link {
-    margin-right: 30px;
-    color: black!important;
-    font-family: 'PT Sans', sans-serif!important;
-    font-size: 25px!important;
-    margin-left: 0px;
-   
-}
 
 #BarSearchBar{
     padding-left: 10px;
@@ -196,10 +178,43 @@ body::-webkit-scrollbar-thumb {
     text-align: left;
 }		
 </style>
-	<div class="topscroll">
-        <a onclick="topFunction()" id="returntotop" style="display: block;"><span><i class="fa fa-angle-up" aria-hidden="true"></i></span>
-        </a>
-    </div>
+ <!-- ##### Breadcrumb Area Start ##### -->
+      <div class="breadcrumb-area">
+            <!-- Top Breadcrumb Area -->
+            <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(/resources/UserPages/ShowAllProducts.jpg);">
+                <h2>ALL PRODUCTS</h2>
+            </div>
+            <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/"><i class="fa fa-home"></i> Home</a></li>  
+                            <li class="breadcrumb-item"><a href="javascript:history.back()">Category</a></li>                          
+                            <li class="breadcrumb-item active" aria-current="page">	<%= plant.name %></li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+      </div>
+    <!-- ##### Breadcrumb Area End ##### -->
+     <!--TO SHOW ALL THE ALERTS RELATED INFO-->  
+        <main role="main" class="container" style="margin-top: 1%;">
+               <div class="container">
+                 <% if(error && error.length > 0) { %>
+                   <div class="alert alert-danger" role="alert"><%=error %></div>
+                 <% } %>
+                 <% if(success && success.length > 0) { %>
+                   <div class="alert alert-success" role="alert"><%= success %></div>
+                 <% } %>
+                 <% if(info && info.length > 0) { %>
+                   <div class="alert alert-info" role="alert"><%= info %></div>
+                  <% } %>
+                </div> 
+        </main>
+
+			
 	<div class="container">
 <hr>
         
@@ -571,4 +586,10 @@ body::-webkit-scrollbar-thumb {
 </div>
 <br><br><br>
 </article>
+			
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
 <%- include("../partials/footer"); -%>
