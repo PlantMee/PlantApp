@@ -54,7 +54,6 @@ router.get("/addToCart/:id",Validation.isLoggedIn,(req,res)=>{
 						price:foundPlant.price,
 						quantity:1
 					};
-
 						foundUser.cart.push(objectCart);	
 						foundUser.save();
 						res.redirect("back");
@@ -65,12 +64,21 @@ router.get("/addToCart/:id",Validation.isLoggedIn,(req,res)=>{
 });
 //............................
 
-router.get("/cart/:id/remove",(req,res)=>{
-	
+router.get("/cart/:id/remove",Validation.isLoggedIn,(req,res)=>{
+	Plant.findOne({_id:req.params.id},(err,foundPlant)=>{
+		if(err){
+			req.flash("error",err.message);
+			return res.redirect("back");
+		}else{
+			User.updateOne({'_id':req.user._id},
+		        { $pull: { 'cart': { plantId: req.params.id }}},
+		        function(err,result){        	
+		   		}
+		    )   
+		    req.flash("success","REMOVED "+foundPlant.name+" SUCCESSFULLY FROM YOUR CART") 
+		    res.redirect("back");
+		}
+	})	
 })
-
-
-
-
 ///..........END OF ROUTES.......................................................................
 module.exports =router;

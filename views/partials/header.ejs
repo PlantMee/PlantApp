@@ -34,10 +34,10 @@
     <div class="header-main-menu">
             <div class="classy-nav-container breakpoint-off">
                 <div class="container">       
-                    <nav class="navbar navbar-expand-lg navbar-light classy-navbar fixed-top">
+                    <nav class="navbar navbar-expand-lg navbar-light classy-navbar fixed-top custom-carets">
                       <div class="container">                        
                           <a class="navbar-brand" href="/">Plantae</a>      
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="   navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <button style="background: none;border: none;"class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="   navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                               <span class="navbar-toggler-icon"></span>
                            </button>                        
 
@@ -75,20 +75,20 @@
                                   <a class="  nav-link active shortNavLink" href="/login">
                                   <i class="fas fa-shopping-cart"></i>0</a>
                                 </li>
-                            <% }else{ %>                                
-                                <li class="nav-item">
-                                 <a style="color:#ff7071;" class="nav-link d-block shortNavLink" href="<%= currentUser._id %>/profile">
-                                    <i class="fas fa-user-circle"></i> Account
-                                 </a>
-                                </li>               
-                                <li class="nav-item">
-                                  <a style="color:#ff7071;" class="nav-link shortNavLink"  href="/logout">
-                                      Logout&nbsp;<i class="fas fa-sign-out-alt"></i></i>
-                                  </a>
-                                </li>
+                            <% }else{ %> 
+                                 <li class="nav-item dropdown">
+                                    <a  style="color:#ff7071;" class="shortNavLink nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      Account
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                      <a  class=" dropdown-item" href="/<%= currentUser._id %>/profile"><i style="color:#ff7071" class="fas fa-user-circle"></i>&nbsp;Edit Profile</a>                                      
+                                      <div class="dropdown-divider"></div>
+                                      <a class="dropdown-item" href="/logout"><i style="color:#ff7071" class="fas fa-sign-out-alt"></i>&nbsp;Logout</a>
+                                    </div>
+                                </li> 
                                 <li class="nav-item">
                                   <a class=" nav-link active shortNavLink" href="/cart">
-                                  <i class="fas fa-shopping-cart"></i><%= currentUser.cart.length %>  </a>
+                                  <i  style="color:#ff7071" class="fas fa-shopping-cart"></i><%= currentUser.cart.length %>  </a>
                                 </li>
                             <%}%>    
                           </ul>                          
