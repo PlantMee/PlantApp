@@ -1,27 +1,6 @@
 <%- include("../partials/header"); -%>
-        
-<nav style="padding:0;" class="navbar navbar-expand-md navbar-dark bg-dark ">
-      <div class="container">         
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+<!-- ***** Top Header Area ***** -->
 
-        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-          <ul class="navbar-nav mr-auto">
-          <% page.forEach(function(navItem){ %>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="<%= navItem.text %>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= navItem.text %></a>
-              <div class="dropdown-menu" aria-labelledby="<%= navItem.text %>">
-               <% navItem.childCategory.forEach(function(childItem){ %>
-                <a class="dropdown-item" href="/category/<%= childItem._id %>"><%= childItem.title %></a>
-               <% }) %>
-              </div>
-            </li>
-            <% }) %>
-          </ul>          
-        </div>
-      </div>
-    </nav>		 
     <!-- ##### Hero Area Start ##### -->
   <section class="hero-area">
         <div class="container">
@@ -40,7 +19,7 @@
             <!-- Single Hero Post -->
             <div class="single-hero-post bg-overlay">
                 <!-- Post Image -->
-                <div class="slide-img bg-img" style="background-image: url(/resources/HomePage/coverA.jpg);"></div>
+                <div class="slide-img bg-img d-block w-100" style="background-image: url(/resources/HomePage/coverE.jpg);"></div>
                 <div class="container h-100">
                     <div class="row h-100 align-items-center">
                         <div class="col-12">
@@ -59,7 +38,22 @@
                 </div>
             </div>
         </div>
+        <!--TO SHOW ALL THE ALERTS RELATED INFO-->  
+      <div>  <main role="main" class="container" style="margin-top: 1%;">
+               <div class="container">
+                 <% if(error && error.length > 0) { %>
+                   <div class="alert alert-danger" role="alert"><%=error %></div>
+                 <% } %>
+                 <% if(success && success.length > 0) { %>
+                   <div class="alert alert-success" role="alert"><%= success %></div>
+                 <% } %>
+                 <% if(info && info.length > 0) { %>
+                   <div class="alert alert-info" role="alert"><%= info %></div>
+                  <% } %>
+                </div> 
+        </main></div>
     </section>
+      
     <!-- ##### Main Area End ##### -->
 
     <!-- ##### Service Area Start ##### -->
@@ -352,10 +346,7 @@
             </div>
         </div>
 
-        <!-- Subscribe Side Thumbnail -->
-        <div class="subscribe-side-thumb wow fadeInUp" data-wow-delay="500ms">
-            <img class="first-img" src="img/core-img/leaf.png" alt="">
-        </div>
+      
     </section>
     <!-- ##### Subscribe Area End ##### -->
 
@@ -458,10 +449,8 @@ for (var i = 0; i < btns.length; i++) {
 </script>
 
   <!-- All Plugins js -->
-    <script src="js/plugins/plugins.js"></script> 
-<script>
-
-    autoPlay();
+ <script>
+   autoPlay();
 
   //FUNCTION TO GET AND AUTO PLAY YOUTUBE VIDEO FROM DATATAG
   function autoPlay() {
@@ -476,7 +465,7 @@ for (var i = 0; i < btns.length; i++) {
           });
       });
   }
-
- 
 </script>
+
+
 <%- include("../partials/footer"); -%>

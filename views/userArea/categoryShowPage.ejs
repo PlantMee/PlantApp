@@ -338,24 +338,44 @@ body{
     padding: 20px;
     font-weight: 400;
 }
-</style>
-  <main role="main" class="container" style="margin-top: 1%;">
-       <div class="container">
-         <% if(error && error.length > 0) { %>
-           <div class="alert alert-danger" role="alert"><%=error %></div>
-         <% } %>
-         <% if(success && success.length > 0) { %>
-           <div class="alert alert-success" role="alert"><%= success %></div>
-         <% } %>
-         <% if(info && info.length > 0) { %>
-           <div class="alert alert-info" role="alert"><%= info %></div>
-          <% } %>
-        </div> 
-    </main><!-- /.container -->
+</style> 
+    
+    <!-- ##### Breadcrumb Area Start ##### -->
+      <div class="breadcrumb-area">
+            <!-- Top Breadcrumb Area -->
+            <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(/resources/UserPages/ShowAllProducts.jpg);">
+                <h2>BRING IN GOOD WILL</h2>
+            </div>
+            <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/"><i class="fa fa-home"></i> Home</a></li>                            
+                            <li class="breadcrumb-item active" aria-current="page">category</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+      </div>
+    <!-- ##### Breadcrumb Area End ##### -->
+        <!--TO SHOW ALL THE ALERTS RELATED INFO-->  
+        <main role="main" class="container" style="margin-top: 1%;">
+               <div class="container">
+                 <% if(error && error.length > 0) { %>
+                   <div class="alert alert-danger" role="alert"><%=error %></div>
+                 <% } %>
+                 <% if(success && success.length > 0) { %>
+                   <div class="alert alert-success" role="alert"><%= success %></div>
+                 <% } %>
+                 <% if(info && info.length > 0) { %>
+                   <div class="alert alert-info" role="alert"><%= info %></div>
+                  <% } %>
+                </div> 
+        </main>
+    </div>
 
-
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
 <div class="container">
     <div class="row clearfix">
         <% plant.forEach(function(foundPlant){ %>
