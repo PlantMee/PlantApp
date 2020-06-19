@@ -1,205 +1,10 @@
-<%- include("../partials/header"); -%>
-<style>
-html{
-    height: 100%;
-}
-#content{
-    text-align: center;
-    padding-top: 25%;
-    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
-                0px 8px 13px rgba(0,0,0,0.1),
-                0px 18px 23px rgba(0,0,0,0.1);
-}
+<%- include("../partials/header"); -%> <link rel="stylesheet"
+href="/stylesheets/user/productShow.css"> <!-- ##### Single Product Details
+Area Start ##### -->
 
-#learn{
-    border-radius: 25px;
-}
-hr{
-    width:auto;
-    border-top: 1px solid #f8f8f8;
-    border-bottom: 1px solid rgba(0,0,0,0.3);
-}
-#SearchBar, #SearchButton{
-    border-radius: 7px;
-}
-#SearchNavBar{
-    height:=10px;
-}
-#SearchBar{
-    width: 600px !important;
-}
-
-#searchbar {
-    display: block;
-    width: 100%;
-    height: calc(1.5em + .75rem + 2px);
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: 7px;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-}
-
-.sbutton {
-    background: white;
-    /* border-radius: 10px!important; */
-    /* border: 1px solid #ced4da!important; */
-    width: inherit;
-    margin-left: -30px!important;
-    /* padding-left: 20px!important; */
-    height: 36px;
-    background: #fdfdfd;
-    border: 0;
-    /* position: absolute; */
-    /* top: 0; */
-    /* right: 0; */
-    /* border-radius: 0 50px 50px 0; */
-    border-radius: 0px 7px 7px 0px;
-    margin: 2.5px 0px;
-}
-
-
-#BarSearchBar{
-    padding-left: 10px;
-    padding-right: 10px;
-}
-.gallery-wrap .img-big-wrap img {
-    height: 450px;
-    width: auto;
-    display: inline-block;
-    cursor: zoom-in;
-}
-
-#returntotop{
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: rgba(0, 0, 0, 0.7);
-    width: 50px;
-    height: 50px;
-    display: block;
-    text-decoration: none;
-    -webkit-border-radius: 35px;
-    -moz-border-radius: 35px;
-    border-radius: 35px;
-    display: none;
-    -webkit-transition: all 0.3s linear;
-    -moz-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    transition: 1s;
-}
-#returntotop i{
-    color: #ffffff;
-    margin: 2.5px;
-    position: absolute;
-    left: 16px;
-    top: 13px;
-    font-size: 19px;
-    transition: 0.3s;
-    -moz-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    
-}
-#returntotop:hover{
-    background: #6c757d;
-}
-#returntotop:hover i{
-    color: #ffffff;
-    top: 0px;
-}
-
-body::-webkit-scrollbar {
-    width: 9px;
-    height: 9px;
-}
-
-body::-webkit-scrollbar-thumb {
-    background: -webkit-gradient(linear,left top,left bottom,from(#ff8a00),to(#e52e71));
-    background: linear-gradient(180deg,#6c757d,#e6f0ec,#6c757d);
-    border-radius: 30px;
-    box-shadow: inset 2px 2px 2px hsla(0,0%,100%,.25), inset -2px -2px 2px rgba(0,0,0,.25);
-}
-::-webkit-scrollbar-track {
-    background: linear-gradient(90deg,#201c29,#201c29 1px,#100e17 0,#100e17);
-}
-.gallery-wrap .img-small-wrap .item-gallery {
-    width: 60px;
-    height: 60px;
-    border: 1px solid #ddd;
-    margin: 7px 2px;
-    display: inline-block;
-    overflow: hidden;
-}
-
-.gallery-wrap .img-small-wrap { 
-    text-align: center;
-}
-.gallery-wrap .img-small-wrap img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: cover;
-    border-radius: 4px;
-    cursor: zoom-in;
-}
-
-
-.carousel{
-    padding-left: 10px !important;
-    padding-top: 10px !important;
-    padding-bottom: 10px !important;
-    padding-right: 10px !important;
-}
-	#CardLeft{
-    border-right: auto !important;
-}
-#SpecMenuBar{
-    margin-left:7% !important ;
-}
-#careTable{
-    width: 50%;
-    text-align: justify-all;
-    font-family: Arial;
-}
-.bg-secondary{
-    background-color: #f0f0f0 !important;
-}
-#RatingsImage{
-    padding-left: 5%;
-    padding-bottom: 1%;
-}
-.headerChange{
-    text-align: left;
-}		
-</style>
- <!-- ##### Breadcrumb Area Start ##### -->
-      <div class="breadcrumb-area">
-            <!-- Top Breadcrumb Area -->
-            <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(/resources/UserPages/ShowAllProducts.jpg);">
-                <h2>ALL PRODUCTS</h2>
-            </div>
-            <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/"><i class="fa fa-home"></i> Home</a></li>  
-                            <li class="breadcrumb-item"><a href="javascript:history.back()">Category</a></li>                          
-                            <li class="breadcrumb-item active" aria-current="page">	<%= plant.name %></li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
-      </div>
-    <!-- ##### Breadcrumb Area End ##### -->
-     <!--TO SHOW ALL THE ALERTS RELATED INFO-->  
+<section style="margin-top:10%;" class="single_product_details_area mb-50"> 
+ <!-- ##### Breadcrumb Area End ##### -->
+        <!--TO SHOW ALL THE ALERTS RELATED INFO-->  
         <main role="main" class="container" style="margin-top: 1%;">
                <div class="container">
                  <% if(error && error.length > 0) { %>
@@ -212,381 +17,322 @@ body::-webkit-scrollbar-thumb {
                    <div class="alert alert-info" role="alert"><%= info %></div>
                   <% } %>
                 </div> 
-        </main>
+        </main>	
+	<div class="produts-details--content mb-50"> 
+		<div class="container"> 
+			<div class="row justify-content-between">
+                    <div class="col-12 col-md-6 col-lg-5">
+                        <div class="single_product_thumb">
+                            <div id="product_details_slider" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+	                                <% plant.otherimages.forEach(function(foundImage){ %>										    
+							                <div class="carousel-item active">
+		                                        <a class="product-img" href="<%= foundImage %>" title="Product Image">
+		                            	            <img class="d-block w-100" src="<%= foundImage %>" alt="1">
+		                       		             </a>
+		                                    </div>			    
+									<% }) %>
+								    <!-----------Image of plants end here----------------->                                                            
+                                </div>
+                                <!-- <ol class="carousel-indicators">
+                                <% var count=0; %>
+                                	<% plant.otherimages.forEach(function(foundImage){ %>												    
+							                <li class="active" data-target="#product_details_slider" data-slide-to="<%=count%>" style="background-image: url(<%= foundImage %>);">
+		                                    </li>	
+		                                    <% count+=1 ;%>		    
+									<% }) %>                                  
+                                </ol>-->
+                            </div>
+                        </div>
+                    </div>
 
-			
-	<div class="container">
-<hr>
-        
-	<div class="card">
-			<div class="row">
-				<aside class="col-sm-5 border-right" id="CardLeft">
-		<article class="gallery-wrap">
-		<div id="caruselPlantImage" class="carousel slide" data-ride="carousel">
-		  <ol class="carousel-indicators">
-		    <li data-target="#caruselPlantImage" data-slide-to="0" class="active"></li>
-		    <li data-target="#caruselPlantImage" data-slide-to="1"></li>
-		    <li data-target="#caruselPlantImage" data-slide-to="2"></li>
-		  </ol>
-		  <div class="carousel-inner">
-		  	<% plant.otherimages.forEach(function(foundImage){ %>
-				    <div class="carousel-item active">
-				    	<!---------------Image of plants ------------------------------->
-				    	<img class="d-block w-100" src="<%= foundImage %>" alt="First slide">
-				    </div>			    
-			<% }) %>
-			    	<!-----------Image of plants end here----------------->
-		  </div>
-		  <a class="carousel-control-prev" href="#caruselPlantImage" role="button" data-slide="prev">
-		    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-		    <span class="sr-only">Previous</span>
-		  </a>
-		  <a class="carousel-control-next" href="#caruselPlantImage" role="button" data-slide="next">
-		    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-		    <span class="sr-only">Next</span>
-		  </a>
-		</div> 
-	<div class="img-big-wrap">
+                    <div class="col-12 col-md-6">
+                        <div class="single_product_desc">
+                            <h4 class="title"><%=plant.name%></h4>
+                            <h4 class="price">₹<%= plant.price %>.00</h4>
+                            <div class="short_overview">
+                                <p><%=plant.about%></p>
+                            </div>	
 
-</aside>
-			<aside class="col-sm-7">
-	<article class="card-body p-5">
-		<!-----------------Plant name-------------------------->
+                            <div class="cart--area d-flex flex-wrap align-items-center">
+                                <!-- Add to Cart Form -->
+                                <form class="cart clearfix d-flex align-items-center" action="/addToCart/<%= plant._id %>" method="POST">
+                                    <div class="quantity">
+                                        <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
+                                        <input type="Number" class="qty-text" id="qty" step="1" min="1" max="<%=plant.quantityAvailable%>" value="1" name="quantity">
+                                        <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                                    </div>
+                                    <button type="submit" name="addtocart" value="<%=plant.name%>" class="btn plantaeF-btn ml-15">Add to cart</button>
+                                </form>
+                                <!-- Wishlist & Compare -->
+                                <div class="wishlist-compare d-flex flex-wrap align-items-center">
+                                    <a href="#" class="wishlist-btn ml-15"><i class="icon_heart_alt"></i></a>		                                    
+                                </div>
+                            </div>
 
-		<h3 class="title mb-3"><%= plant.name %></h3>
-		
-		<hr>
+                            <div class="products--meta">
+                                <p><span>Delivery:</span> <span>Pan India Delivery</span></p>
+                                <p><span>Category:</span> <span><%=plant.category.title%></span></p>
+                                <p><span>Ease of care:</span> 
+                                	<span>
+                                		<% if(plant.difficultyLevel===1){ %>
+									  		<img id ="RatingsImage1" src="/resources/RatingsStar/Ratin1Star.png" alt=" 1 star" style="height:1.4em;">
+									  	<% } else if(plant.difficultyLevel===2){ %>
+									  		<img id ="RatingsImage2" src="/resources/RatingsStar/Ratin2Star.png" alt=" 2 star" style="height:1.4em;">  	
+									  	<% } else if(plant.difficultyLevel===3){ %>
+									  		<img id ="RatingsImage3" src="/resources/RatingsStar/Ratin3Star.png" alt=" 3 star" style="height:1.4em;">
+									  	<% } else if(plant.difficultyLevel===4){ %>
+									  		<img id ="RatingsImage4" src="/resources/RatingsStar/Ratin4Star.png" alt=" 4 star" style="height:1.4em;">
+									  	<% } else if(plant.difficultyLevel===5){ %>
+									  		<img id ="RatingsImage5" src="/resources/RatingsStar/Ratin5Star.png" alt=" 5 star" 	style="height:1.4em;">
+									  	<% } %>
+									</span>
+									</p>
+                                <p>
+                                    <span>Share on:</span>
+                                    <span>
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-pinterest"></i></a>
+                                    <a href="#"><i class="fa fa-google-plus"></i></a>
+                                </span>
+                                </p>
+                            </div>
 
-	<p class="price-detail-wrap"> 
-		<span class="price h3 text-warning"> 
-		<!-----------------Plant Price details-------------------------->		
-		<span class="currency"> Rs.</span><span class="num"><%= plant.price %></span>
-		<span class="currency">/-</span>
-		</span> 
-		 
-	</p> <!-- price-detail-wrap .// -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-	<dl class="item-property">
-		  <dt>Description</dt>
-		  <dd>
-		  	<p style="text-align: justify;">
-		  		<%= plant.description %>
-		  	</p>
-		  </dd>
-	</dl>
-	<br>
-	<br>
-	<dl class="param param-feature"> <dt style="font-family: robot,monospace;
-	font-size: 18px;"># In this pack, you will get beautiful <span class="text-lowercase"><%= plant.name %></span> plant.</dt>
-	  
-	</dl>  <!-- rating image .// -->
-	<dl class="param param-feature">
-	  <dt>Ease of care     
-	  	<% if(plant.difficultyLevel===1){ %>
-	  		<img id ="RatingsImage1" src="/resources/RatingsStar/Ratin1Star.png" alt=" 1 star" height="100px">
-	  	<% } else if(plant.difficultyLevel===2){ %>
-	  		<img id ="RatingsImage2" src="/resources/RatingsStar/Ratin2Star.png" alt=" 2 star" height="100px">  	
-	  	<% } else if(plant.difficultyLevel===3){ %>
-	  		<img id ="RatingsImage3" src="/resources/RatingsStar/Ratin3Star.png" alt=" 3 star" height="100px">
-	  	<% } else if(plant.difficultyLevel===4){ %>
-	  		<img id ="RatingsImage4" src="/resources/RatingsStar/Ratin4Star.png" alt=" 4 star" height="100px">
-	  	<% } else if(plant.difficultyLevel===5){ %>
-	  		<img id ="RatingsImage5" src="/resources/RatingsStar/Ratin5Star.png" alt=" 5 star" height="100px">
-	  	<% } %>
-	  </dt>
-	  
-	</dl>  <!-- item-property-delivery option .// -->
-	<dl class="param param-feature">
-	  <dt>Delivery</dt>
-	  <dd>Pan India Delivery</dd>
-	</dl>  <!-- item-property-end .// -->
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="product_details_tab clearfix">
+                        <!-- Tabs -->
+                        <ul class="nav nav-tabs" role="tablist" id="product-details-tab">
+                            <li class="nav-item">
+                                <a href="#description" class="nav-link active" data-toggle="tab" role="tab">Description</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#addi-info" class="nav-link" data-toggle="tab" role="tab">Additional Information</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#reviews" class="nav-link" data-toggle="tab" role="tab">Reviews <span class="text-muted">(1)</span></a>
+                            </li>
+                        </ul>
+                        <!-- Tab Content -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade show active" id="description">
+                                <div class="description_area">
+                                	<h6>General Information</h6>
+                                    <p><%=plant.description%></p>
+                                    <h6>Specification</h6>
+                                    <small>##Below sizes are indicative actual product size may vary</small>
+                                    <p>
+                                    <!--THIS IS THE SPEACIFICATION INDEX-->
+                                    	<div class="row">
+                                    		<div class="col-md-3">
+		                                    	<table >
+												  <thead>
+												    <tr>												      
+												      <th scope="col">Specification</th>
+												      <th scope="col">Value</th>										      
+												    </tr>
+												  </thead>
+												  <tbody>
+												    <tr>												      
+												      <td>Height</td>
+												      <td><%= plant.specification.height %> inch.</td>												      
+												    </tr>
+												    <tr>												     
+												      <td>Width</td>
+												      <td><%= plant.specification.spread %> inch.</td>												  
+												    </tr>												    
+												  </tbody>
+												</table>
+											</div>
+										</div>												
+									<!--...........SPECS DATA END HERE.................-->
+									</p>
+									<h6><img src="/resources/productShow/features.svg" style="width:1em; padding:auto;"> Features </h6>
+										<div class="row">
+											<div class="col-md-5">
+												<p><%= plant.features %></p>
+											</div>
+										</div>		
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="addi-info">
+                                <div class=" additional_info_area description_area">
+                                	<h5>General planting care <small>(After delivery process) </small>:</h5>
+                                		<div style="margin-left:1%;">
+	                                		<p> Step 1: <span>Unbox your plant and completely remove it from all packaging. </span></p>
 
-<hr>
-	<div class="row">
-		<div class="col-sm-5">
-			<dl class="param param-inline">
-			  <dt>Quantity: </dt>
-			  <dd>
-			  	<select class="form-control form-control-sm" style="width:70px;">
-			  		<option> 1 </option>
-			  		<option> 2 </option>
-			  		<option> 3 </option>
-			  		<option> 4 </option>
-			  		<option> 5 </option>
-			  	</select>
-			  </dd>
-			</dl>  <!-- item-property .// -->
-		</div> <!-- col.// -->
-		<div class="col-sm-7">
-			<dl class="param param-inline">
-				  <dt> POT VARIANTS: </dt>
-				  <dd>
-				  	<label class="form-check form-check-inline">
-					  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-					  <span class="form-check-label">Plastic</span>
-					</label>
-					<label class="form-check form-check-inline">
-					  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-					  <span class="form-check-label">Ceramic</span>
-					</label>
-				  </dd>
-			</dl>  <!-- item-property .// -->
-		</div> <!-- col.// -->
-	</div> <!-- row.// -->
-	<hr>
-	<a href="#" class="btn btn-lg btn-primary text-uppercase"> Buy now </a>
-	<a href="#" class="btn btn-lg btn-outline-primary text-uppercase"> <i class="fas fa-shopping-cart"></i> Add to cart </a>
-</article> <!-- card-body.// -->
-		</aside> <!-- col.// -->
-	</div> <!-- row.// -->
-</div> <!-- card.// -->
+											<p> Step 2: <span>Ensure that your plant is hydrated by thoroughly watering.</span></p>
+
+											<p> Step 3: <span>Allow your plant to rest indoors for 24-48 hours. If plants were shipped without soil, plant immediately in a container. Spritzing with water occasionally throughout the day can help keep humidity levels higher.</span></p>
+
+											<p> Step 4: <span>For indoor plants, plant in its container while being kept in a shady spot.  For outdoor plants or trees, if already in a container start re-introducing it to the outdoors in shade only. </span></p>
+
+											<p> Step 5: <span>Slowly acclimate the plant to sun exposure by increasing the amount of sunlight over a period of several days</span></p>
+
+											<p> Step 6: <span>For outdoor plants or trees, plant in its permanent location.</span></p>
+										</div>	
 
 
-</div>
-<!--container.//-->
+                                	<% if(plant.sunlight||plant.soil||plant.water){ %>
+                                	<h5 style="padding-top:2	%;">Plant Care</h5>
+                                		<h6><img src="/resources/productShow/sunCare.svg" style="width:2em;" >&nbsp;&nbsp;Sunlight:</h6>
+	                                    <p >
+	                                    	<ul style="margin-left:4%; ">
+	                                    		<% plant.sunlight.forEach(function(sun){ %>
+	                                    		<li>
+		                                    		<%=sun%>
+	                                    		</li>
+	                                    		<% }) %>
+	                                    	</ul>	
+	                                    </p>
+	                                    <h6><img src="/resources/productShow/waterCare.svg" style="width:2em;" >&nbsp;&nbsp;Water:</h6>
+	                                    <p >
+	                                    	<ul style="margin-left:4%;">
+	                                    		<% plant.water.forEach(function(watercare){ %>
+	                                    		<li>
+		                                    		<%=watercare%>
+	                                    		</li>
+	                                    		<% }) %>
+	                                    	</ul>	
+	                                    </p>
+	                                    <h6><img src="/resources/productShow/solicare.svg" style="width:2em;" >&nbsp;&nbsp;Soil:</h6>
+	                                    <p >
+	                                    	<ul style="margin-left:4%;">
+	                                    		<% plant.soil.forEach(function(soilcare){ %>
+	                                    		<li>
+		                                    		<%=soilcare%>
+	                                    		</li>
+	                                    		<% }) %>
+	                                    	</ul>	
+	                                    </p>
 
+	                                <% }else{ %>
+	                                	<h6>Garden Essntials</h6>
+	                                	<p>Technically to garden all you need is seeds, soils, sun, and water. But a lot of gardening is hard work that it made easier with the right tools. If you’re new to gardening and figuring out the basics, there are many gardening tools available with us that you should consider adding to your collection. What you’ll need will be determined by what you grow, where you grow it, and how you grow it, but these tools are great for most gardeners.</p>
+	                                <% } %>    
+                                    
 
-<br>
-<article class="bg-secondary mb-3" style="background-color: #f0f0f0;">  
-<div class="card-body ">
+                                    <h6>Product uses :</h6>
+                                    <p><%=plant.uses%></p>
+                                    <p>How do I cancel my order?
+                                        <br> <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum eius eum, minima!</span></p>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="reviews">
+                                <div class="reviews_area">
+                                    <ul>
+                                        <li>
+                                            <div class="single_user_review mb-15">
+                                                <div class="review-rating">
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <span>for Quality</span>
+                                                </div>
+                                                <div class="review-details">
+                                                    <p>by <a href="#">Colorlib</a> on <span>12 Sep 2018</span></p>
+                                                </div>
+                                            </div>
+                                            <div class="single_user_review mb-15">
+                                                <div class="review-rating">
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <span>for Design</span>
+                                                </div>
+                                                <div class="review-details">
+                                                    <p>by <a href="#">Colorlib</a> on <span>12 Sep 2018</span></p>
+                                                </div>
+                                            </div>
+                                            <div class="single_user_review">
+                                                <div class="review-rating">
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <span>for Value</span>
+                                                </div>
+                                                <div class="review-details">
+                                                    <p>by <a href="#">Colorlib</a> on <span>12 Sep 2018</span></p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
 
-	<div id=SpecMenuBar>
-		<div class="btn-group">
-		   <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#descriptionMenu" 	aria-expanded="false" aria-controls="collapseExample">
-		    DESCRIPTION
-		  </button>
-		   <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#specsMenu" 	aria-expanded="false" aria-controls="collapseExample">
-		    SPECIFICATION
-		  </button>
-		  <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#plantingMenu" 	aria-expanded="false" aria-controls="collapseExample">
-		    PLANTING AND CARE
-		  </button>
-		</div>
-<!-------------------------Page to add description information------------------------>
-		  	  <div id="descriptionMenu" class="collapseExample" data-parent="#SpecMenuBar">
-     			 	<div class="card-body">
-		       			 <p>The botanical name of Peace Lily Plant is Spathiphyllum. Peace Lily (Small) Plant is a very popular indoor houseplant. It is a clump-growing herbaceous perennial which produces white flowers that look like the hood of a cobra. Leaves are shiny and glossy, attractive even with no spathes.
-		       			 </p>
-		       			
-						
-						<br><br>
+                                <div class="submit_a_review_area mt-50">
+                                    <h4>Submit A Review</h4>
+                                    <form action="#" method="post">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form-group d-flex align-items-center">
+                                                    <span class="mr-15">Your Ratings:</span>
+                                                    <div class="stars">
+                                                        <input type="radio" name="star" class="star-1" id="star-1">
+                                                        <label class="star-1" for="star-1">1</label>
+                                                        <input type="radio" name="star" class="star-2" id="star-2">
+                                                        <label class="star-2" for="star-2">2</label>
+                                                        <input type="radio" name="star" class="star-3" id="star-3">
+                                                        <label class="star-3" for="star-3">3</label>
+                                                        <input type="radio" name="star" class="star-4" id="star-4">
+                                                        <label class="star-4" for="star-4">4</label>
+                                                        <input type="radio" name="star" class="star-5" id="star-5">
+                                                        <label class="star-5" for="star-5">5</label>
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <div class="form-group">
+                                                    <label for="name">Nickname</label>
+                                                    <input type="email" class="form-control" id="name" placeholder="Nazrul">
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <div class="form-group">
+                                                    <label for="options">Reason for your rating</label>
+                                                    <select class="form-control" id="options">
+                                                          <option>Quality</option>
+                                                          <option>Value</option>
+                                                          <option>Design</option>
+                                                          <option>Price</option>
+                                                          <option>Others</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label for="comments">Comments</label>
+                                                    <textarea class="form-control" id="comments" rows="5" data-max-length="150"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <button type="submit" class="btn plantaeF-btn">Submit Your Review</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
 
-						<h3>Plant Characterstics</h3>
-
-						<table class="table table-hover" id="careTable" border="1">
-						<tbody>
-						<tr>
-						<td>Common Name </td>
-						<td>Peace lily, Cobra plant.</td>
-						</tr>
-						
-						<tr>
-						<td>Flower Colour </td>
-						<td>Creamy-White.</td>
-						</tr>
-						<tr>
-						<td>Bloom Time </td>
-						<td>Spring or early summer.</td>
-						</tr>
-						<tr>
-						<td>Difficulty Level </td>
-						<td>Easy.</td>
-						</tr>
-						<tr><td colspan="2" style="text-align: center;">Maximum Reachable Height up to 40 centimeters </td>
-
-						</tr>
-						</tbody>
-						</table>
-
-	<br>
-						<dl class="moreInfo">
-							<dt>
-								<h3 class="headerChange">Peace Lily special feature</h3>
-							</dt>
-							<dd>
-								One of the rare indoor flowering plant 
-							</dd>
-							<dd>
-								Excellent air purifying plant. 
-							</dd>	
-	<br>
-							<dt>
-								Ornamental Use:
-							</dt>
-							<dd>
-								It makes an excellent container or house plant 
-							</dd>
-							<dd>
-								It Beautifies Your house 
-							</dd>	
-
-						</dl>
-
-<hr>
-		    		 	 <!------------------------------------------youtube video------------->
-		    		 	 <div>
-			    		 	 <iframe width="697" height="392" src="https://www.youtube.com/embed/Ei2syQCGz_Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-			    		 	 	
-			    		 	 </iframe>
-		    		 	 </div>
-		<br><br>
-		    		 	 <!--------------------------------Wikipedia links---------->
-		    		 	 <dl class="FurtherLnks">
-		    		 	 	<p>For further inmformartion please visit followig links...</p>
-		    		 	 	<dt style="padding-left: 3%;">
-		    		 	 		Wikipedia: 
-		    		 	 	
-		    		 	 	<a href="https://en.wikipedia.org/wiki/Spathiphyllum"> Peace Lily </a>
-		    		 	 	</dt>
-		    		 	 </dl>
-		   			</div>
-				</div>
-		<!------------------------------Page to add specification information-------------------->
-				  	<div id="specsMenu" class="collapse" data-parent="#SpecMenuBar">
-		     			 <div class="card-body">
-		       			 	 <table  class="table table-hover" id="careTable" border="1">
-								<tbody>
-                                <tr>
-								    <td>Plant Height</td>
-								    <td>12 inch (30 cm) </td>
-								</tr>
-								<tr>
-								<td>Plant Spread</td>
-								<td>5 inch (13 cm) </td>
-								</tr>
-								</tbody>
-							</table><br>
-                             <div>
-							*above specification are indicative only. actual dimensions may vary by +-10% <br><br>
-						  </div>
-		    		 	  	 <b>What makes it special:</b><br>
-                             <ul>
-                                 <li>One of the rarest indoor flowering plant.</li> <li>NASA recommended air purifier plant.</li> <li>Easy to care and low maintenance plant.</li> <li>Best for office desk, bedroom.</li>
-                             </ul>
-		    		 	</div>
-		   			</div>
- <!----------------------------Page to add planting and caring information------------------------>
-   			  <div id="plantingMenu" class="collapse" data-parent="#SpecMenuBar">
-     			 <div class="card-body">
-       			  <!------------------------------------------------>
-					<b>Sunlight</b>
-					<br> 
-					<p>
-						<li>
-						Natural indirect / artificial bright light is ideal for peace lily plant growth.
-						</li>
-				       		 <br> 
-						<b>Soil</b>
-							 <br> 
-					  	<li>
-					  		The soil should be well drained and fertile, rich in organic content.
-					  	</li> 
-					     	 <br> 
-						<b>Watering</b>
-							 <br> 
-						<li>
-							Poke your finger/plain small stick into the soil to check the moisture.
-						</li> 
-						<li>
-							Apply 1 cup (Approx. 50 ml) water when the top soil (1-2 inch) in pot feels dry to touch.
-						</li> 
-						<li>
-							Apply water probably in the morning or evening time.
-						</li> 
-						<li>
-							Do not overwater the plant.
-						</li> 
-						<li>
-							As a rule of thumb, water the plant thoroughly in the summer and reduce 	watering in winter and rainy season.
-						</li>
-							<br> 
-						<b>Application of Fertilizer</b>
-							<br> 
-						<li>
-							Before application of fertilizer loosen the topsoil without disturbing the roots of the plant so it can uptake the nutrients and moisture.
-						</li>
-						<li>
-							During the main growing season (Feb to May, July to Sept.) feed the plant with organic fertilizer once a month.
-						</li> 
-						<li>
-							Apply water immediately after application of fertilizer.
-						</li>
-							<br> 
-						<b>Plant Protection</b>
-							<br> 
-						<li>
-							Remove dead, infected or damaged plant parts and discard them away from the plants.
-						</li> 
-						<li>
-							For any insect attack or disease, you can use Neem oil, Eucalyptus oil or Citrus oil spray for primary treatment.
-						</li> 
-							<br>
-						<b>Don'ts</b>
-						<br> 
-						<li>
-							Do not over water the plant especially when pot does not have drainage holes.
-						</li> 
-						<li>
-							keep away from the AC Vents.
-						</li>
-
-<br>
-
-						<h3 class="headerChange">Peace Lily care</h3>
-						<p>
-							<b>Initial care for 1-2 weeks after receiving plant at your location:</b> 
-						</p>
-						<li>
-							Keep the plant in Natural indirect /Artificial bright Light.
-						</li>
-					 	<li>
-					 		Poke your finger/plain small stick into the soil to check the moisture.
-					 	</li>
-					 	<li>
-					 		apply 3 cup (Approx. 150 ml) water when top soil (1-2 inches) feels dry to touch.
-					 	</li>
-					 	<li>
-					 		Do not re-pot for min. 2 weeks after receiving it.
-					 	</li>
-					 		<br>
-					 	<b>Key requirements to keep plant healthy:</b>
-					 	<p>
-					 </p>
-				 <table class="table table-hover" id="careTable" border="1">
-					<tbody>
-						 <tr>
-					 		<td>Sunlight </td>
-					 		<td>Natural indirect /artificial bright light.</td>
-					 	</tr>
- 					 	<tr>
-					 		<td>Watering </td>
-					 		<td>Apply 3 cup (Approx. 150 ml) water when the topsoil (1-2 inch) in pot feels dry to touch.</td>
-					 	</tr>
-					 	<tr>
-					 		<td>Soil </td>
-					 		<td>Soil should be well drain and fertile, rich in organic content.</td>
-					 	</tr>
-					 	<tr>
-					 		<td>Temperature </td>
-					 		<td>18 to 24 degree Celsius</td>
-					 	</tr>
-					 	<tr>
-					 		<td>Fertilizer </td>
-					 		<td>Apply organic fertilizer once a month.</td>
-					 	</tr>
-					 </tbody>
- 				</table>
-
-       			  <!------------------------------------------------>
-    		</div>
-   		 </div>
-		   
-		
-	</div>
-</div>
-<br><br><br>
-</article>
-			
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 <script>
 function goBack() {
   window.history.back();

@@ -27,7 +27,7 @@ router.get("/",function (req,res) {
 	var plantLogo=["/resources/HomePage/viewCategoryLogoA.svg","/resources/HomePage/viewCategoryLogoB.svg","/resources/HomePage/viewCategoryLogoC.svg",
 					"/resources/HomePage/viewCategoryLogoD.svg","/resources/HomePage/viewCategoryLogoE.svg","/resources/HomePage/viewCategoryLogoF.svg"];
 	newsapi.v2.everything({
-	  q: 'plant tips ',	  
+	  q: 'gardening',	  
 	  language: 'en',
 	  sortBy: 'Date',
 	  pageSize: 3

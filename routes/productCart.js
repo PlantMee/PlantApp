@@ -24,7 +24,7 @@ router.get("/cart",Validation.isLoggedIn,(req,res)=>{
 })
 //......................
 //Add an item to cart route
-router.get("/addToCart/:id",Validation.isLoggedIn,(req,res)=>{
+router.post("/addToCart/:id",Validation.isLoggedIn,(req,res)=>{
 	User.findOne(req.user._id,(err,foundUser)=>{
 		if(err){
 			req.flash("error",err.message);
@@ -46,13 +46,22 @@ router.get("/addToCart/:id",Validation.isLoggedIn,(req,res)=>{
 					// 	console.log(listCart[i]);
 					// }
 					//There is a damn bug in the whole system as we can add same item multiple times
+					var productQuantity;
+					if(req.body.quantity){
+						productQuantity=req.body.quantity;
+						console.log(1)
+					}else{
+						console.log(2)
+						productQuantity=1;
+					}
+					console.log(req.body);
 					var objectCart ={
 						plantId:foundPlant._id,
 						plantName:foundPlant.name,
 						plantImage:foundPlant.image,
 						plantDesc:foundPlant.description,
 						price:foundPlant.price,
-						quantity:1
+						quantity:productQuantity
 					};
 						foundUser.cart.push(objectCart);	
 						foundUser.save();

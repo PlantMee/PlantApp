@@ -183,6 +183,7 @@ router.get("/childNav/:id/edit",Validation.isLoggedIn,(req,res)=>{
 			 	if(err){
 			 		console.log(err);
 			 	}else{
+			 		console.log(foundData);	
 					 		//renderShow Edit Page along with the data
 					res.render("adminArea/editChildCategory",{childCategory:foundData,parentNav:parentNav});				 		
 			 	}	 	
