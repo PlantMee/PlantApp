@@ -145,9 +145,14 @@ router.get("/product/:id",(req,res)=>{
 	 	if(err){
 	 		req.flash("error","SOMETHING WENT WRONG PLEASE RETRY AFTER SOMETIME");
 			res.redirect("back")
-	 	}else{		 		
-		 	Plant.findOne({_id:req.params.id}).populate("category").exec((err,foundPlant)=>{		
-				res.render("userArea/productShowPage",{page:foundPage,plant:foundPlant});
+	 	}else{	 		
+		 	Plant.findOne({_id:req.params.id}).populate("category reviews").exec((err,foundPlant)=>{		
+		 		if(err){
+		 			req.flash("error",err.message);
+		 			res.redirect("back");
+		 		}else{			 		
+					res.render("userArea/productShowPage",{page:foundPage,plant:foundPlant});
+				}	
 			})	 		 				 		
 	 	}		
 	});	

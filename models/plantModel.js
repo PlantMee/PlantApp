@@ -5,6 +5,12 @@ const plantSchema =new mongoose.Schema({
 		type:String,
 		required:true
 	},
+	reviews: [
+      {
+         type: mongoose.Schema.Types.ObjectId,
+         ref: "Reviews"
+      } 
+   ],
 	othernames:[],
 	youtube:String,
 	image:{

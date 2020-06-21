@@ -14,14 +14,17 @@ const express 		=require("express"),
 	  methodOverride= require("method-override");
 
 	  var UserPages			=require("./routes/user_pages"),
+	  	  Reviews			=require("./routes/reviews"),
 	  	  ProductCart		=require("./routes/productCart"),
 	  	  adminPages		=require("./routes/adminRoutes"),
 	  	  adminProductRoutes=require("./routes/adminProductRoutes"),
 	  	  userProfile		=require("./routes/userProfile"),
 	  	  Admin 		    =require("./models/admin");
-	   
+	   	  
 //SETTING APP VARIABLE
 const app=express();
+//moment local for time lapse
+app.locals.moment = require('moment');
 
 //CONNECTING TO ONLINE DATABASE
 //=======================================
@@ -77,6 +80,7 @@ app.use("/admin",adminPages);
 app.use("/admin/plant",adminProductRoutes);
 app.use(userProfile);
 app.use(ProductCart);
+app.use(Reviews);
 
 //=======START THE SERVER================
 const port =process.env.PORT||3000;

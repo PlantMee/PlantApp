@@ -26,7 +26,7 @@ Area Start ##### -->
                             <div id="product_details_slider" class="carousel slide" data-ride="carousel">
                                 <div class="carousel-inner">
 	                                <% plant.otherimages.forEach(function(foundImage){ %>										    
-							                <div class="carousel-item active">
+							                <div class="carousel-item active" style="height:auto;	">
 		                                        <a class="product-img" href="<%= foundImage %>" title="Product Image">
 		                            	            <img class="d-block w-100" src="<%= foundImage %>" alt="1">
 		                       		             </a>
@@ -55,19 +55,25 @@ Area Start ##### -->
                             </div>	
 
                             <div class="cart--area d-flex flex-wrap align-items-center">
-                                <!-- Add to Cart Form -->
-                                <form class="cart clearfix d-flex align-items-center" action="/addToCart/<%= plant._id %>" method="POST">
-                                    <div class="quantity">
-                                        <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
-                                        <input type="Number" class="qty-text" id="qty" step="1" min="1" max="<%=plant.quantityAvailable%>" value="1" name="quantity">
-                                        <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
-                                    </div>
-                                    <button type="submit" name="addtocart" value="<%=plant.name%>" class="btn plantaeF-btn ml-15">Add to cart</button>
-                                </form>
-                                <!-- Wishlist & Compare -->
-                                <div class="wishlist-compare d-flex flex-wrap align-items-center">
-                                    <a href="#" class="wishlist-btn ml-15"><i class="icon_heart_alt"></i></a>		                                    
-                                </div>
+                              <div class= "row">
+	                              <div class="col-md-10">
+		                                <!-- Add to Cart Form -->
+		                                <form class="cart clearfix d-flex align-items-center" action="/addToCart/<%= plant._id %>" method="POST">
+		                                    <div class="quantity">
+		                                        <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
+		                                        <input type="Number" class="qty-text" id="qty" step="1" min="1" max="<%=plant.quantityAvailable%>" value="1" name="quantity">
+		                                        <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
+		                                    </div>
+		                                    <button type="submit" name="addtocart" value="<%=plant.name%>" class="btn plantaeF-btn ml-15">Add to cart</button>
+		                                </form>
+		                            </div>
+		                            <div class="col-md-2">
+		                                <!-- Wishlist & Compare -->
+		                                <div class="wishlist-compare d-flex flex-wrap align-items-center">
+		                                    <a href="#" class="wishlist-btn ml-15"><i class="icon_heart_alt"></i></a>	                                   
+		                                </div>
+		                            </div>
+		                        </div>    
                             </div>
 
                             <div class="products--meta">
@@ -89,13 +95,7 @@ Area Start ##### -->
 									</span>
 									</p>
                                 <p>
-                                    <span>Share on:</span>
-                                    <span>
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-pinterest"></i></a>
-                                    <a href="#"><i class="fa fa-google-plus"></i></a>
-                                </span>
+                                    
                                 </p>
                             </div>
 
@@ -118,7 +118,7 @@ Area Start ##### -->
                                 <a href="#addi-info" class="nav-link" data-toggle="tab" role="tab">Additional Information</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#reviews" class="nav-link" data-toggle="tab" role="tab">Reviews <span class="text-muted">(1)</span></a>
+                                <a href="#reviews" class="nav-link" data-toggle="tab" role="tab">Reviews <span class="text-muted">(<%= plant.reviews.length %>)</span></a>
                             </li>
                         </ul>
                         <!-- Tab Content -->
@@ -181,11 +181,11 @@ Area Start ##### -->
 										</div>	
 
 
-                                	<% if(plant.sunlight||plant.soil||plant.water){ %>
-                                	<h5 style="padding-top:2	%;">Plant Care</h5>
+                                	<% if(plant.sunlight.length>0||plant.soil.length>0||plant.water.length>0){ %>
+                                	<h5 style="padding-top:2 %;">Plant Care</h5>
                                 		<h6><img src="/resources/productShow/sunCare.svg" style="width:2em;" >&nbsp;&nbsp;Sunlight:</h6>
 	                                    <p >
-	                                    	<ul style="margin-left:4%; ">
+	                                    	<ul style="margin-left:4%; 	">
 	                                    		<% plant.sunlight.forEach(function(sun){ %>
 	                                    		<li>
 		                                    		<%=sun%>
@@ -215,108 +215,69 @@ Area Start ##### -->
 	                                    </p>
 
 	                                <% }else{ %>
-	                                	<h6>Garden Essntials</h6>
+	                                	<h6>Garden Essentials</h6>
 	                                	<p>Technically to garden all you need is seeds, soils, sun, and water. But a lot of gardening is hard work that it made easier with the right tools. If you’re new to gardening and figuring out the basics, there are many gardening tools available with us that you should consider adding to your collection. What you’ll need will be determined by what you grow, where you grow it, and how you grow it, but these tools are great for most gardeners.</p>
 	                                <% } %>    
                                     
 
                                     <h6>Product uses :</h6>
                                     <p><%=plant.uses%></p>
-                                    <p>How do I cancel my order?
-                                        <br> <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum eius eum, minima!</span></p>
+                                    <p>Wikipedia : <span><a style="color:blue;" href="<%=plant.wikilink %>"><%=plant.wikilink %></a></span></p>
+
                                 </div>
                             </div>
                             <div role="tabpanel" class="tab-pane fade" id="reviews">
-                                <div class="reviews_area">
+                               
                                     <ul>
                                         <li>
-                                            <div class="single_user_review mb-15">
-                                                <div class="review-rating">
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <span>for Quality</span>
-                                                </div>
-                                                <div class="review-details">
-                                                    <p>by <a href="#">Colorlib</a> on <span>12 Sep 2018</span></p>
-                                                </div>
-                                            </div>
-                                            <div class="single_user_review mb-15">
-                                                <div class="review-rating">
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <span>for Design</span>
-                                                </div>
-                                                <div class="review-details">
-                                                    <p>by <a href="#">Colorlib</a> on <span>12 Sep 2018</span></p>
-                                                </div>
-                                            </div>
-                                            <div class="single_user_review">
-                                                <div class="review-rating">
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <span>for Value</span>
-                                                </div>
-                                                <div class="review-details">
-                                                    <p>by <a href="#">Colorlib</a> on <span>12 Sep 2018</span></p>
-                                                </div>
-                                            </div>
+                                           <% plant.reviews.forEach(function(review){ %>
+	                                            <div class="single_user_review mb-15">
+	                                                <div class="review-rating">
+	                            <!--..........................THIS IS THE AREA TO FETAURE REVIEW STARS................-->
+	                                                    <% for(i=0; i<review.star; i++){%>                                                    
+		                                                    <i class="fa fa-star" aria-hidden="true"></i>
+		                                                <% } %>    
+	                                                    <span>for Plantae</span>
+	                                                </div>
+	                                               
+	                                                <div class="review-details">
+	                                                	<%=review.text%>
+	                                                    <p>by <a href="#"><%=  review.username %></a>  &nbsp;<span><%= moment(review.createdAt).fromNow() %></span></p>
+	                                                </div>
+	                                            </div>                                            
+                                            <% }) %>                                            
                                         </li>
                                     </ul>
-                                </div>
+                              
 
-                                <div class="submit_a_review_area mt-50">
+                                <div class="submit_a_review_area">
                                     <h4>Submit A Review</h4>
-                                    <form action="#" method="post">
+                                    <small>##You need to login before you can review an item </small>
+                                    <form action="/product/<%=plant._id%>/review" method="POST">
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="form-group d-flex align-items-center">
                                                     <span class="mr-15">Your Ratings:</span>
                                                     <div class="stars">
-                                                        <input type="radio" name="star" class="star-1" id="star-1">
+                                                        <input required 	type="radio" name="review[star]" value="1" class="star-1" id="star-1">
                                                         <label class="star-1" for="star-1">1</label>
-                                                        <input type="radio" name="star" class="star-2" id="star-2">
+                                                        <input type="radio" name="review[star]" value="2" class="star-2" id="star-2">
                                                         <label class="star-2" for="star-2">2</label>
-                                                        <input type="radio" name="star" class="star-3" id="star-3">
+                                                        <input type="radio" name="review[star]" value="3" class="star-3" id="star-3">
                                                         <label class="star-3" for="star-3">3</label>
-                                                        <input type="radio" name="star" class="star-4" id="star-4">
+                                                        <input type="radio" name="review[star]" value="4" class="star-4" id="star-4">
                                                         <label class="star-4" for="star-4">4</label>
-                                                        <input type="radio" name="star" class="star-5" id="star-5">
+                                                        <input type="radio" name="review[star]" value="5" class="star-5" id="star-5">
                                                         <label class="star-5" for="star-5">5</label>
                                                         <span></span>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-12 col-md-6">
-                                                <div class="form-group">
-                                                    <label for="name">Nickname</label>
-                                                    <input type="email" class="form-control" id="name" placeholder="Nazrul">
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-md-6">
-                                                <div class="form-group">
-                                                    <label for="options">Reason for your rating</label>
-                                                    <select class="form-control" id="options">
-                                                          <option>Quality</option>
-                                                          <option>Value</option>
-                                                          <option>Design</option>
-                                                          <option>Price</option>
-                                                          <option>Others</option>
-                                                    </select>
-                                                </div>
-                                            </div>
+                                           
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <label for="comments">Comments</label>
-                                                    <textarea class="form-control" id="comments" rows="5" data-max-length="150"></textarea>
+                                                    <textarea name="review[text]" required class="form-control" id="comments" rows="5" data-max-length="250"></textarea>
                                                 </div>
                                             </div>
                                             <div class="col-12">
