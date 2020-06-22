@@ -210,7 +210,7 @@ router.get("/childNav/:id/edit",Validation.isLoggedIn,(req,res)=>{
               }
             }   
             child.title=req.body.title;
-            child.parentTag=req.body.category;
+            
 
             child.save();
             req.flash("success","Successfully Updated!");

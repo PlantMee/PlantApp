@@ -1,7 +1,7 @@
 
 //CONNECTING TO ONLINE DATABASE
 module.exports =  {
-	uri :"mongodb+srv://dbUser:dbUser@cluster0-puo4f.mongodb.net/test?retryWrites=true&w=majority"
+	uri :"mongodb+srv://deep:deep@123@cluster0-rmqqg.mongodb.net/plantAe?retryWrites=true&w=majority"
 };
 
 //=======================================

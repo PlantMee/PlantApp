@@ -222,12 +222,18 @@ Area Start ##### -->
 
                                     <h6>Product uses :</h6>
                                     <p><%=plant.uses%></p>
-                                    <p>Wikipedia : <span><a style="color:blue;" href="<%=plant.wikilink %>"><%=plant.wikilink %></a></span></p>
-
+                                    <%if(plant.wikilnk){ %>
+                                    	<p>Wikipedia : <span><a style="color:blue;" href="<%=plant.wikilink %>"><%=plant.wikilink %></a></span></p>
+                                    <% } %>
+                                    <div class="video-container">
+									  <iframe src="<%=plant.youtube%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+									</div>
                                 </div>
                             </div>
                             <div role="tabpanel" class="tab-pane fade" id="reviews">
-                               
+                               <% if(plant.reviews.length==0){%>
+                               	<h3>Be the first person to review the product..	</h3>
+                               <% } %>
                                     <ul>
                                         <li>
                                            <% plant.reviews.forEach(function(review){ %>
@@ -252,7 +258,7 @@ Area Start ##### -->
 
                                 <div class="submit_a_review_area">
                                     <h4>Submit A Review</h4>
-                                    <small>##You need to login before you can review an item </small>
+                                    <small>##You need to login first before you can review an item </small>
                                     <form action="/product/<%=plant._id%>/review" method="POST">
                                         <div class="row">
                                             <div class="col-12">
