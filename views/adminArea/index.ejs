@@ -1,5 +1,98 @@
-<%- include("../partials/adminHeader"); -%>
+	<%- include("../partials/adminHeader"); -%>
+	<link href="/stylesheets/admin/adminHome.css" rel="stylesheet">
+		
+	<div class="wrapper">	 
+	  <div class="container">
+	    <div class="row">
+	      <div class="col-md-8 col-md-offset-2">	      
+	        <div class="fresh-table toolbar-color-blue">
+		        <!--
+		          Available colors for the full background: full-color-blue, full-color-azure, full-color-green, full-color-red, full-color-orange
+		          Available colors only for the toolbar: toolbar-color-blue, toolbar-color-azure, toolbar-color-green, toolbar-color-red, toolbar-color-orange
+		          I have downloaded thuis code form Creative Tim
+		        -->      
+
+	          <table id="fresh-table" class="table">
+	            <thead>
+	              <th data-field="id">ID</th>
+	              <th data-field="name" data-sortable="true">Name</th>
+	              <th data-field="salary" data-sortable="true">Email</th>
+	              <th data-field="country" data-sortable="true">Subject</th>
+	              <th data-field="city">Message</th>
+	              <th data-field="actions">Actions</th>
+	            </thead>
+	            <tbody>
+	            <!--.......................CONTACT US DATA BEGIN.......................--> 
+	            <%var id =1;%>
+	            <% contactUs.forEach(function(data){ %>
+	              <tr>
+	              	<td><%= id %></td>
+	                <td><%= data.userName %></td>
+	                <td><%= data.email %></td>
+	                <td><%= data.subject %></td>
+	                <td><%= data.message %></td>	                
+	                <td><a style="color:#d94711;" href="/admin/contactUs/<%= data._id %>/remove" class="editLink"><i class="fas fa-trash"></i></a></td>
+	              </tr>     
+	              <% id+=1; %>         	           
+	            <% }) %>
+	            <!--........................................CONTACTUS DATA END..............................-->   
+	            </tbody>
+	          </table>
+	        </div> 
+	      </div>
+	      <div class="col=-md-4 col-md-offset-2	">
+	      	<table style="margin:10%" >
+			  <thead>
+			    <tr>												      
+			      <th scope="col">SUBSCRIBERS LIST</th>			      									      
+			    </tr>
+			  </thead>
+			  <tbody>
+			  <% Subscribers.forEach(function(data){ %>
+			    <tr>												      
+			      <td><%= data.email %></td>			      											      
+			    </tr>
+			  <% }) %>  			    												    
+			  </tbody>
+			</table>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+			  
+	<!-- Javascript -->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script src="https://unpkg.com/bootstrap-table/dist/bootstrap-table.min.js"></script>
+
+	<script type="text/javascript">
+	  var $table = $('#fresh-table')
+
+
+	 
 
 
 
-<%- include("../partials/adminFooter"); -%>
+	  $(function () {
+	    $table.bootstrapTable({
+	      classes: 'table table-hover table-striped',
+	      toolbar: '.toolbar',
+	      search: true,
+	      pagination: true,
+	      striped: true,
+	      sortable: true,
+	      pageSize: 8,
+	      pageList: [8, 10, 25, 50, 100],
+
+	      formatShowingRows: function (pageFrom, pageTo, totalRows) {
+	        return ''
+	      },
+	      formatRecordsPerPage: function (pageNumber) {
+	        return pageNumber + ' rows visible'
+	      }
+	    })
+	  })
+
+	</script>	
+
+	<%- include("../partials/adminFooter"); -%>

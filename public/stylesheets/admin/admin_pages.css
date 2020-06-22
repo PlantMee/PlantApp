@@ -9,7 +9,37 @@ body{
 	font-family: 'Raleway',sans-serif;
 }
 
+/*TABLE STYLING*/
+table             { 
+  border-spacing: 1; 
+  border-collapse: collapse; 
+  background:white;
+  border-radius:6px;
+  overflow:hidden;
+  max-width:800px; 
+  width:100%;
+  margin:0 auto;
+  position:relative;
+}  
 
+thead tr { 
+  height:60px;
+  background:#FFED86;
+  font-size:16px;
+  padding:1em; 
+}
+tr th{
+  padding:1em;
+}
+tbody tr{
+   height:48px; border-bottom:1px solid #E3F1D5 ;   
+ }
+ tr td{
+  padding:1em;
+ }
+&:last-child  {
+   border:0; 
+}
 /*AddPLantFormCSS*/
 #addPlantForm{
     margin: 3% auto;

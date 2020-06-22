@@ -4,6 +4,8 @@ const express =require("express"),
 const Page 			= require("../models/page");
 const ChildCategory =require("../models/childCategory");
 const Validation 	=require("../middleware/adminValidation.js");
+const Contacted		=require("../models/contactUs");
+const Subscribers	=require("../models/userSubscribed");
 var Admin 	 		=require("../models/admin");
 const Middleware	=require("../middleware/index");
 
@@ -18,15 +20,44 @@ cloudinary.config({
 
 //SETTING APP VARIABLE
 router.get("/",Validation.isLoggedIn,function (req,res) {
-	res.render("adminArea/index",{
-		title:"Plantae_Admin"
-	});		
+	Contacted.find({},(err,foundData)=>{
+		if(err){
+			req.flash("error",err.message);
+			res.redirect("back");
+		}else{
+			Subscribers.find({},(err2,foundSubs)=>{
+				if(err){
+					req.flash("error",err2.message);
+					res.redirect("back");
+				}else{
+					res.render("adminArea/index",{
+						contactUs:foundData,
+						Subscribers:foundSubs
+					});
+				}
+			})		
+		}	
+	})			
 });
 //============ROUTE TO ADD NEW PAGE IN NAV BAR===
 router.get("/pages/new",Validation.isLoggedIn,(req,res)=>{
 	res.render("adminArea/addPage");
 });
 
+//=================Remove contacts us data//////////////////////
+router.get("/contactUs/:id/remove",Validation.isLoggedIn,(req,res)=>{
+	Contacted.findByIdAndRemove(req.params.id,(err,done)=>{
+		if(err){
+			req.flash("error",err.message);
+			res.redirect("back");
+		}else{
+			req.flash("success","SUCCESSFULLY REMOVED THE PERSON");
+			res.redirect("/admin");
+		}
+	})
+});
+
+///////////////////////////////////////////////////////////////
 router.post("/pages",Validation.isLoggedIn,(req,res)=>{
 	var pageTitle=req.body.page.toUpperCase();
 	Page.findOne({text:pageTitle},(err,foundName)=>{
