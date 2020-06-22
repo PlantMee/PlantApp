@@ -24,6 +24,53 @@ router.get("/cart",Validation.isLoggedIn,(req,res)=>{
 })
 //......................
 //Add an item to cart route
+router.get("/addToCart/:id",Validation.isLoggedIn,(req,res)=>{
+	User.findOne(req.user._id,(err,foundUser)=>{
+		if(err){
+			req.flash("error",err.message);
+			return res.redirect("back");
+		}else{			
+			Plant.findOne({_id:req.params.id},(err,foundPlant)=>{
+				if(err){
+					req.flash("error",err.message);
+					return res.redirect("back");
+				}else{
+					req.flash("success","SUCCESSFULLY ADDED "+ foundPlant.name +" TO CART");					
+					// var listCart=[];
+					// foundUser.cart.forEach(function(data){
+					// 	listCart.push(data._id);
+					// })
+					// var checker =foundPlant._id;
+					// console.log(typeof checker)
+					// for(var i =0 ;i<listCart.length;i++){
+					// 	console.log(listCart[i]);
+					// }
+					//There is a damn bug in the whole system as we can add same item multiple times
+					var productQuantity;
+					if(req.body.quantity){
+						productQuantity=req.body.quantity;
+						console.log(1)
+					}else{
+						console.log(2)
+						productQuantity=1;
+					}
+					console.log(req.body);
+					var objectCart ={
+						plantId:foundPlant._id,
+						plantName:foundPlant.name,
+						plantImage:foundPlant.image,
+						plantDesc:foundPlant.about,
+						price:foundPlant.price,
+						quantity:productQuantity
+					};
+						foundUser.cart.push(objectCart);	
+						foundUser.save();
+						res.redirect("back");
+				}
+			})		
+		}
+	})
+});//POst  route
 router.post("/addToCart/:id",Validation.isLoggedIn,(req,res)=>{
 	User.findOne(req.user._id,(err,foundUser)=>{
 		if(err){
@@ -59,7 +106,7 @@ router.post("/addToCart/:id",Validation.isLoggedIn,(req,res)=>{
 						plantId:foundPlant._id,
 						plantName:foundPlant.name,
 						plantImage:foundPlant.image,
-						plantDesc:foundPlant.description,
+						plantDesc:foundPlant.about,
 						price:foundPlant.price,
 						quantity:productQuantity
 					};
