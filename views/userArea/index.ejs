@@ -46,7 +46,7 @@
     <!-- ##### Main Area End ##### -->
 
     <!-- ##### Service Area Start ##### -->
-    <section class="our-services-area bg-gray section-padding-100-0">
+    <section id="serviceArea" class="our-services-area bg-gray section-padding-100-0">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -233,9 +233,8 @@
                             <div class="product-tag">
                                 <a href="#"><img src="resources/HomePage/newProductLogoB.svg" style="height:35px; padding-bottom:6px; width:30px;"></a>
                             </div>
-                            <div class="product-whole d-flex">
-                                <a style="border-radius:50%; href="#" class="wishlist-btn"><i class="fas fa-shopping-cart"></i></a>
-                                <a style="border-radius:25px; href="cart.html" class="add-to-cart-btn">Add to cart</a>    
+                            <div class="product-whole d-flex">                                
+                                <a style="margin:auto;border-radius:15px;"" href="/addToCart/<%= PData._id %>" class="add-to-cart-btn">Add to cart</a>    
                             </div>
                         </div>
                         <!-- Product Info -->

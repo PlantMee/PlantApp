@@ -81,7 +81,9 @@ app.use("/admin/plant",adminProductRoutes);
 app.use(userProfile);
 app.use(ProductCart);
 app.use(Reviews);
-
+app.get('*', (req, res)=> { 
+    res.render("partials/404"); 
+}) 
 //=======START THE SERVER================
 const port =process.env.PORT||3000;
 app.listen(port,function() {

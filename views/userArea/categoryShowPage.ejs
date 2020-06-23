@@ -385,15 +385,20 @@ body{
 	                    <div class="cp_img">
 	                        <a href="/product/<%= foundPlant._id %>"><img class="img-fluid" src="<%= foundPlant.image %>" alt="<% foundPlant.name %>"></a>	
 	                        <div class="hover">
-	                            <a href="/addToCart/<%= foundPlant._id %>" class="btn btn-primary btn-sm waves-effect"><i class="zmdi zmdi-plus"></i></a>
-	                            <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i class="zmdi zmdi-shopping-cart"></i></a>
+                            <style>
+                                .btn{
+                                    border-radius:15%;
+                                }
+                            </style>
+	                            <a href="/addToCart/<%= foundPlant._id %>" class="btn btn-info btn-sm waves-effect"><i class="fas fa-shopping-cart"></i></a>
+	                            <a href="/product/<%= foundPlant._id %>" class="btn btn-info btn-sm waves-effect"><i class="fas fa-info"></i>nfo</a>
+                               
 	                        </div>
 	                    </div>
 	                    <div class="product_details">
 	                        <h5><a href="/product/<%= foundPlant._id %>"><%= foundPlant.name %></a></h5>
 	                        <ul class="product_price list-unstyled">
-	                            <li class="old_price">Rs. <%= foundPlant.price %></li>
-	                            
+	                            <li class="old_price">Rs. <%= foundPlant.price %></li>	                            
 	                        </ul>
 	                    </div>
 	                </div>

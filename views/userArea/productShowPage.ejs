@@ -66,13 +66,7 @@ Area Start ##### -->
 		                                    </div>
 		                                    <button type="submit" name="addtocart" value="<%=plant.name%>" class="btn plantaeF-btn ml-15">Add to cart</button>
 		                                </form>
-		                            </div>
-		                            <div class="col-md-2">
-		                                <!-- Wishlist & Compare -->
-		                                <div class="wishlist-compare d-flex flex-wrap align-items-center">
-		                                    <a href="#" class="wishlist-btn ml-15"><i class="icon_heart_alt"></i></a>	                                   
-		                                </div>
-		                            </div>
+		                            </div>		                           
 		                        </div>    
                             </div>
 
@@ -222,12 +216,13 @@ Area Start ##### -->
 
                                     <h6>Product uses :</h6>
                                     <p><%=plant.uses%></p>
-                                    <%if(plant.wikilnk){ %>
-                                    	<p>Wikipedia : <span><a style="color:blue;" href="<%=plant.wikilink %>"><%=plant.wikilink %></a></span></p>
-                                    <% } %>
+                                    <p>Wikipedia : <span><a style="color:blue;" href="<%=plant.wikilink %>"><%=plant.wikilink %></a></span></p>
                                     <div class="video-container">
 									  <iframe src="<%=plant.youtube%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 									</div>
+
+                                    	
+                                    
                                 </div>
                             </div>
                             <div role="tabpanel" class="tab-pane fade" id="reviews">
