@@ -87,5 +87,5 @@ app.get('*', (req, res)=> {
 //=======START THE SERVER================
 const port =process.env.PORT||3000;
 app.listen(port,function() {
-	console.log("SERVER HAS SATRTED");
+	console.log("SERVER HAS SATRTED"+port);
 })
